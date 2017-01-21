@@ -50,12 +50,52 @@ class Project_36Frm : public wxFrame
 		void WxSB_RotateZScroll(wxScrollEvent& event);
 		// Funkcja aktualizuj¹ca szkielet na podstawie punktów
 		void repaint();
+		/**
+		 * Funkcja aktualizuj¹ca punkty
+		 */
+		void updatePoints();
+		void WxSB_HeadRotateZScroll(wxScrollEvent& event);
+		void WxSB_HeadRotateXScroll(wxScrollEvent& event);
+		void WxSB_BarkLeftRotateYScroll(wxScrollEvent& event);
+		void WxSB_BarkLeftRotateZScroll(wxScrollEvent& event);
+		void WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event);
+		void WxSB_BarkPrawyRotateZScroll(wxScrollEvent& event);
 		
 	private:
 		//Do not add custom control declarations between
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxStaticText *WxST_BarkLeftRotateZ;
+		wxScrollBar *WxSB_BarkLeftRotateZ;
+		wxStaticText *WxStaticText10;
+		wxBoxSizer *WxBoxSizer13;
+		wxStaticText *WxST_BarkPrawyRotateZ;
+		wxScrollBar *WxSB_BarkPrawyRotateZ;
+		wxStaticText *WxStaticText15;
+		wxBoxSizer *WxBoxSizer14;
+		wxStaticText *WxST_BarkPrawyRotateY;
+		wxScrollBar *WxSB_BarkPrawyRotateY;
+		wxStaticText *WxStaticText11;
+		wxBoxSizer *WxBoxSizer12;
+		wxStaticText *WxST_BarkLeftRotateY;
+		wxScrollBar *WxSB_BarkLeftRotateY;
+		wxStaticText *WxStaticText9;
+		wxBoxSizer *WxBoxSizer11;
+		wxStaticText *WxStaticText8;
+		wxStaticText *WxStaticText7;
+		wxBoxSizer *WxBoxSizer10;
+		wxBoxSizer *WxBoxSizer9;
+		wxBoxSizer *WxBoxSizer8;
+		wxStaticText *WxST_HeadRotateX;
+		wxScrollBar *WxSB_HeadRotateX;
+		wxStaticText *WxStaticText3;
+		wxBoxSizer *WxBoxSizer7;
+		wxStaticText *WxST_HeadRotateZ;
+		wxScrollBar *WxSB_HeadRotateZ;
+		wxStaticText *WxStaticText5;
+		wxBoxSizer *WxBoxSizer6;
+		wxStaticText *WxStaticText111;
 		wxStaticText *WxST_RotateZ;
 		wxScrollBar *WxSB_RotateZ;
 		wxStaticText *WxStaticText6;
@@ -82,8 +122,17 @@ class Project_36Frm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
+			ID_WXSB_BarkLeftRotateZ = 21,
+			wxID_BARKPRAWYROTATEZ = 23,
+			ID_WXSB_BARKPRAWYROTATEY = 22,
+			ID_WXSB_BarkLeftRotateY = 20,
+			ID_WXSTATICTEXT8 = 27,
+			ID_WXSTATICTEXT7 = 26,
+			ID_WXSB_HEADROTATEX = 18,
+			ID_WXSB_HEADROTATEZ = 17,
+			ID_WXSTATICTEXT111 = 19,
 			ID_WXSTATICTEXT3 = 15,
-			ID_WXSCROLLBAR1 = 14,
+			ID_WXSB_ROTATEY = 15,
 			ID_WXST_ROTATEX = 15,
 			ID_WXSB_ROTATEX = 14,
 			ID_WXSTATICTEXT2 = 13,
