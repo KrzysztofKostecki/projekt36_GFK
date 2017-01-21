@@ -163,3 +163,17 @@ void Project_36Frm::WxSB_RotateZScroll(wxScrollEvent& event)
      WxST_RotateZ->SetLabel(str);
  //    Repaint();
 }
+
+// Funkcja aktualizuj¹ca szkielet na podstawie punktów
+void Project_36Frm::repaint()
+{
+	/* TODO (#1#): Implement Project_36Frm::repaint() */
+}
+
+/*
+ * Funkcja aktualizuj¹ca punkty
+ */
+void Project_36Frm::updatePoints()
+{
+	/* TODO (#1#): Implement Project_36Frm::updatePoints() */
+}

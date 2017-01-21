@@ -48,6 +48,8 @@ class Project_36Frm : public wxFrame
 		void WxSB_RotateXScroll(wxScrollEvent& event);
 		void WxSB_RotateYScroll(wxScrollEvent& event);
 		void WxSB_RotateZScroll(wxScrollEvent& event);
+		// Funkcja aktualizuj¹ca szkielet na podstawie punktów
+		void repaint();
 		
 	private:
 		//Do not add custom control declarations between
