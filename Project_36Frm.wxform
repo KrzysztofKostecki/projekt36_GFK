@@ -1,5 +1,5 @@
 object frmNewForm: TfrmNewForm
-  Left = 10
+  Left = 8
   Top = 8
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
@@ -529,7 +529,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxSB_HeadRotateZ: TWxScrollBar
-          Left = 40
+          Left = 38
           Top = 6
           Width = 121
           Height = 17

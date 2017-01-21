@@ -28,11 +28,11 @@ BEGIN_EVENT_TABLE(Project_36Frm,wxFrame)
 	
 	EVT_CLOSE(Project_36Frm::OnClose)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateZ,Project_36Frm::WxSB_BarkLeftRotateZScroll)
+	EVT_COMMAND_SCROLL(wxID_BARKPRAWYROTATEZ,Project_36Frm::WxSB_HeadRotateZScroll)
 	
-	EVT_COMMAND_SCROLL(wxID_BARKPRAWYROTATEZ,Project_36Frm::WxSB_BarkPrawyRotateZScroll)
+	EVT_COMMAND_SCROLL(ID_WXSB_BARKPRAWYROTATEY,Project_36Frm::WxSB_HeadRotateZScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_BARKPRAWYROTATEY,Project_36Frm::WxSB_BarkPrawyRotateYScroll)
+	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateZ,Project_36Frm::WxSB_BarkLeftRotateYScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateY,Project_36Frm::WxSB_BarkLeftRotateYScroll)
 	
@@ -153,14 +153,8 @@ void Project_36Frm::CreateGUIControls()
 	WxBoxSizer9 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer8->Add(WxBoxSizer9, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxBoxSizer10 = new wxBoxSizer(wxVERTICAL);
-	WxBoxSizer8->Add(WxBoxSizer10, 0, wxALIGN_CENTER | wxALL, 5);
-
 	WxStaticText7 = new wxStaticText(this, ID_WXSTATICTEXT7, _("Bark Lewy"), wxPoint(68, 5), wxDefaultSize, 0, _("WxStaticText7"));
 	WxBoxSizer9->Add(WxStaticText7, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxStaticText8 = new wxStaticText(this, ID_WXSTATICTEXT8, _("Bark Prawy"), wxPoint(66, 5), wxDefaultSize, 0, _("WxStaticText8"));
-	WxBoxSizer10->Add(WxStaticText8, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer11 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer9->Add(WxBoxSizer11, 0, wxALIGN_CENTER | wxALL, 5);
@@ -174,6 +168,25 @@ void Project_36Frm::CreateGUIControls()
 
 	WxST_BarkLeftRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkLeftRotateY"));
 	WxBoxSizer11->Add(WxST_BarkLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer13 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer9->Add(WxBoxSizer13, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText10 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText10"));
+	WxBoxSizer13->Add(WxStaticText10, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_BarkLeftRotateZ = new wxScrollBar(this, ID_WXSB_BarkLeftRotateZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_BarkLeftRotateZ"));
+	WxSB_BarkLeftRotateZ->Enable(false);
+	WxBoxSizer13->Add(WxSB_BarkLeftRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_BarkLeftRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkLeftRotateZ"));
+	WxBoxSizer13->Add(WxST_BarkLeftRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer10 = new wxBoxSizer(wxVERTICAL);
+	WxBoxSizer8->Add(WxBoxSizer10, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText8 = new wxStaticText(this, ID_WXSTATICTEXT8, _("Bark Prawy"), wxPoint(66, 5), wxDefaultSize, 0, _("WxStaticText8"));
+	WxBoxSizer10->Add(WxStaticText8, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer12 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer10->Add(WxBoxSizer12, 0, wxALIGN_CENTER | wxALL, 5);
@@ -201,19 +214,6 @@ void Project_36Frm::CreateGUIControls()
 	WxST_BarkPrawyRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkPrawyRotateZ"));
 	WxBoxSizer14->Add(WxST_BarkPrawyRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxBoxSizer13 = new wxBoxSizer(wxHORIZONTAL);
-	WxBoxSizer9->Add(WxBoxSizer13, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxStaticText10 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText10"));
-	WxBoxSizer13->Add(WxStaticText10, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxSB_BarkLeftRotateZ = new wxScrollBar(this, ID_WXSB_BarkLeftRotateZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_BarkLeftRotateZ"));
-	WxSB_BarkLeftRotateZ->Enable(false);
-	WxBoxSizer13->Add(WxSB_BarkLeftRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxST_BarkLeftRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkLeftRotateZ"));
-	WxBoxSizer13->Add(WxST_BarkLeftRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
-
 	SetTitle(_("Project_36"));
 	SetIcon(wxNullIcon);
 	
@@ -233,6 +233,8 @@ void Project_36Frm::CreateGUIControls()
 	WxSB_HeadRotateZ->Enable(true);
 	WxSB_RotateZ->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_RotateZ->Enable(true);
+	
+	
 }
 
 void Project_36Frm::OnClose(wxCloseEvent& event)
@@ -278,10 +280,64 @@ void Project_36Frm::WxSB_RotateZScroll(wxScrollEvent& event)
     repaint();
 }
 
+
+void Project_36Frm::initPoints()
+{
+    points = vector<Point>(16);
+    points[HEAD] = Point(0, 0.8, 0);
+    points[NECK] = Point(0, 0.5, 0);
+    points[HIP] = Point(0,-0.5,0);
+    points[LLEG] = Point(-0.15, -0.52, 0);
+    points[RLEG] = Point(0.15, -0.52, 0);
+    points[LKNEE] = Point(-0.4, -0.8, 0);
+    points[RKNEE] = Point(0.4, -0.8, 0);
+    points[LFOOT] = Point(-0.65, -1.1, 0);
+    points[RFOOT] = Point(0.65, -1.1, 0);
+    points[LARM] = Point(-0.15, 0.5, 0);
+    points[RARM] = Point(0.15, 0.5, 0);
+    points[LELBOW] = Point(-0.4, 0.5, 0);
+    points[RELBOW] = Point(0.4, 0.5, 0);
+    points[LHAND] = Point(-0.7, 0.5, 0);
+    points[RHAND] = Point(0.7, 0.5, 0);   
+}
+
 // Funkcja aktualizuj¹ca szkielet na podstawie punktów
 void Project_36Frm::repaint()
 {
 	/* TODO (#1#): Implement Project_36Frm::repaint() */
+	wxClientDC dc1(WxPanel1);
+    int w,h;
+    wxBufferedDC dc(&dc1);   
+    WxPanel1->GetSize(&w,&h);
+    dc.SetBackground(wxBrush(RGB(255,255,255)));
+    dc.Clear();
+    
+    
+    PointsConverter *pointsConverter = new PointsConverter(w, h, 2.0);
+    vector<wxPoint> nodes = pointsConverter->calculateWxPointsVector(points);
+    
+    dc.SetBrush(wxBrush(wxColor(0,0,0)));
+    for(int i=0; i<11; i++){
+        dc.DrawCircle(nodes[i], 2);
+    }
+    
+    dc.DrawLine(nodes[HEAD], nodes[NECK]);
+    dc.DrawLine(nodes[NECK], nodes[HIP]);
+    dc.DrawLine(nodes[HIP], nodes[SPINE]);
+    dc.DrawLine(nodes[HIP], nodes[LLEG]);
+    dc.DrawLine(nodes[HIP], nodes[RLEG]);
+    dc.DrawLine(nodes[LLEG], nodes[LKNEE]);
+    dc.DrawLine(nodes[RLEG], nodes[RKNEE]);
+    dc.DrawLine(nodes[LKNEE], nodes[LFOOT]);
+    dc.DrawLine(nodes[RKNEE], nodes[RFOOT]);
+    dc.DrawLine(nodes[NECK], nodes[LARM]);
+    dc.DrawLine(nodes[NECK], nodes[RARM]);
+    dc.DrawLine(nodes[LARM], nodes[LELBOW]);
+    dc.DrawLine(nodes[RARM], nodes[RELBOW]);
+    dc.DrawLine(nodes[LELBOW], nodes[LHAND]);
+    dc.DrawLine(nodes[RELBOW], nodes[RHAND]);
+	
+	
 }
 
 /*

@@ -32,6 +32,8 @@
 #include <wx/sizer.h>
 ////Header Include End
 
+#include "Nodes.h"
+
 ////Dialog Style Start
 #undef Project_36Frm_STYLE
 #define Project_36Frm_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX
@@ -48,6 +50,7 @@ class Project_36Frm : public wxFrame
 		void WxSB_RotateXScroll(wxScrollEvent& event);
 		void WxSB_RotateYScroll(wxScrollEvent& event);
 		void WxSB_RotateZScroll(wxScrollEvent& event);
+		void initPoints();
 		// Funkcja aktualizuj¹ca szkielet na podstawie punktów
 		void repaint();
 		/**
@@ -66,10 +69,6 @@ class Project_36Frm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxStaticText *WxST_BarkLeftRotateZ;
-		wxScrollBar *WxSB_BarkLeftRotateZ;
-		wxStaticText *WxStaticText10;
-		wxBoxSizer *WxBoxSizer13;
 		wxStaticText *WxST_BarkPrawyRotateZ;
 		wxScrollBar *WxSB_BarkPrawyRotateZ;
 		wxStaticText *WxStaticText15;
@@ -78,13 +77,17 @@ class Project_36Frm : public wxFrame
 		wxScrollBar *WxSB_BarkPrawyRotateY;
 		wxStaticText *WxStaticText11;
 		wxBoxSizer *WxBoxSizer12;
+		wxStaticText *WxStaticText8;
+		wxBoxSizer *WxBoxSizer10;
+		wxStaticText *WxST_BarkLeftRotateZ;
+		wxScrollBar *WxSB_BarkLeftRotateZ;
+		wxStaticText *WxStaticText10;
+		wxBoxSizer *WxBoxSizer13;
 		wxStaticText *WxST_BarkLeftRotateY;
 		wxScrollBar *WxSB_BarkLeftRotateY;
 		wxStaticText *WxStaticText9;
 		wxBoxSizer *WxBoxSizer11;
-		wxStaticText *WxStaticText8;
 		wxStaticText *WxStaticText7;
-		wxBoxSizer *WxBoxSizer10;
 		wxBoxSizer *WxBoxSizer9;
 		wxBoxSizer *WxBoxSizer8;
 		wxStaticText *WxST_HeadRotateX;
@@ -122,11 +125,11 @@ class Project_36Frm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
-			ID_WXSB_BarkLeftRotateZ = 21,
 			wxID_BARKPRAWYROTATEZ = 23,
 			ID_WXSB_BARKPRAWYROTATEY = 22,
-			ID_WXSB_BarkLeftRotateY = 20,
 			ID_WXSTATICTEXT8 = 27,
+			ID_WXSB_BarkLeftRotateZ = 21,
+			ID_WXSB_BarkLeftRotateY = 20,
 			ID_WXSTATICTEXT7 = 26,
 			ID_WXSB_HEADROTATEX = 18,
 			ID_WXSB_HEADROTATEZ = 17,
@@ -145,6 +148,7 @@ class Project_36Frm : public wxFrame
 	private:
 		void OnClose(wxCloseEvent& event);
 		void CreateGUIControls();
+		vector<Point> points;
 };
 
 #endif

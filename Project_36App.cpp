@@ -17,6 +17,8 @@ bool Project_36FrmApp::OnInit()
     Project_36Frm* frame = new Project_36Frm(NULL);
     SetTopWindow(frame);
     frame->Show();
+    frame->initPoints();
+    frame->repaint();
     return true;
 }
  
