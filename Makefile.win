@@ -1,7 +1,7 @@
 # Project: Project1
 # Compiler: Default GCC compiler
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ IDE 7.4.2.569 on 22.01.17 19:00
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 22.01.17 20:31
 
 WXLIBNAME = wxmsw29u
 CPP       = g++.exe
@@ -39,7 +39,7 @@ $(BIN): $(OBJ)
 Objects/MingW/Project_36App.o: $(GLOBALDEPS) Project_36App.cpp Project_36App.h Project_36Frm.h Nodes.h
 	$(CPP) -c Project_36App.cpp -o Objects/MingW/Project_36App.o $(CXXFLAGS)
 
-Objects/MingW/Project_36Frm.o: $(GLOBALDEPS) Project_36Frm.cpp Project_36Frm.h Nodes.h
+Objects/MingW/Project_36Frm.o: $(GLOBALDEPS) Project_36Frm.cpp Project_36Frm.h Nodes.h vecmat.h
 	$(CPP) -c Project_36Frm.cpp -o Objects/MingW/Project_36Frm.o $(CXXFLAGS)
 
 Objects/MingW/Nodes.o: $(GLOBALDEPS) Nodes.cpp Nodes.h

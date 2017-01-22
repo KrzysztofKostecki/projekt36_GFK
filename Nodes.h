@@ -57,6 +57,7 @@ class PointsConverter{
         wxPoint calculateWxPoint(Point p);
         vector<wxPoint> calculateWxPointsVector(vector<Point> points);
         PointsConverter(int w, int h, double d);
+    
 
     private:
         int w;

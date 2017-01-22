@@ -299,11 +299,12 @@ void Project_36Frm::CreateGUIControls()
 	WxSB_RotateX->Enable(true);
 	WxSB_RotateY->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_RotateY->Enable(true);
+	WxSB_RotateZ->SetScrollbar(0, 1, 361, 1,true);
+	WxSB_RotateZ->Enable(true);
 	
 	WxSB_HeadRotateZ->SetScrollbar(0, 1, 201, 1,true);
 	WxSB_HeadRotateZ->Enable(true);
-	WxSB_RotateZ->SetScrollbar(0, 1, 361, 1,true);
-	WxSB_RotateZ->Enable(true);
+	
 	
 	
 }
@@ -335,6 +336,7 @@ void Project_36Frm::WxSB_RotateYScroll(wxScrollEvent& event)
 	wxString str;
     str<<(WxSB_RotateY->GetThumbPosition());
     WxST_RotateY->SetLabel(str);
+    Project_36Frm::initPoints();
     updatePoints();
     repaint();
 }
@@ -347,6 +349,7 @@ void Project_36Frm::WxSB_RotateZScroll(wxScrollEvent& event)
 	wxString str;
     str<<(WxSB_RotateZ->GetThumbPosition());
     WxST_RotateZ->SetLabel(str);
+    Project_36Frm::initPoints();
     updatePoints();
     repaint();
 }
@@ -363,7 +366,7 @@ void Project_36Frm::initPoints()
     points[LKNEE] = Point(-0.4, -0.8, 0);
     points[RKNEE] = Point(0.4, -0.8, 0);
     points[LFOOT] = Point(-0.65, -1.1, 0);
-    points[RFOOT] = Point(0.65, -1.1, 0);
+    points[RFOOT] = Point(0.65, -1.1, 1.0);
     points[LARM] = Point(-0.15, 0.5, 0);
     points[RARM] = Point(0.15, 0.5, 0);
     points[LELBOW] = Point(-0.4, 0.5, 0);
@@ -385,6 +388,7 @@ void Project_36Frm::repaint()
     
     
     PointsConverter *pointsConverter = new PointsConverter(w, h, 2.0);
+    
     vector<wxPoint> nodes = pointsConverter->calculateWxPointsVector(points);
     
     dc.SetBrush(wxBrush(wxColor(0,0,0)));
@@ -414,9 +418,64 @@ void Project_36Frm::repaint()
 /*
  * Funkcja aktualizuj¹ca punkty
  */
+ #include "vecmat.h"
+ 
+void normalization(Vector4 *v){
+    for(int i = 0; i<=3; i++){
+        v->data[i] = v->data[i]/v->data[3];
+    }
+}
+
+//"point" który obracamy "around" 
+/*void transformBodyPart(Matrix m, Point &p, Point wokol){
+    Vector4 v;
+       v.Set(p.x,p.y,p.z);
+       v=m*v;
+       normalization(&v);
+       p.x = v.GetX();
+       p.y = v.GetY();
+       p.z = v.GetZ();
+}*/
 void Project_36Frm::updatePoints()
 {
+    Project_36Frm::initPoints();
 	/* TODO (#1#): Implement Project_36Frm::updatePoints() */
+	 Matrix4 m;
+	 m.data[0][0]=1.0;
+     m.data[1][1]=1.0;
+     m.data[2][2]=1.0;
+	 Matrix4 Rx,Ry,Rz;
+     Rx.data[0][0]=1;
+     Rx.data[1][1]=cos(M_PI/180*WxSB_RotateX->GetThumbPosition());
+     Rx.data[2][1]=-sin(M_PI/180*WxSB_RotateX->GetThumbPosition());
+     Rx.data[1][2]=sin(M_PI/180*WxSB_RotateX->GetThumbPosition());
+     Rx.data[2][2]=cos(M_PI/180*WxSB_RotateX->GetThumbPosition());
+     m=m*Rx;
+     Ry.data[1][1]=1.0;
+     Ry.data[0][0]=cos(M_PI/180*WxSB_RotateY->GetThumbPosition());
+     Ry.data[0][2]=-sin(M_PI/180*WxSB_RotateY->GetThumbPosition());
+     Ry.data[2][0]=sin(M_PI/180*WxSB_RotateY->GetThumbPosition());
+     Ry.data[2][2]=cos(M_PI/180*WxSB_RotateY->GetThumbPosition());
+     m=m*Ry;
+     Rz.data[2][2]=1.0;
+     Rz.data[0][0]=cos(M_PI/180*WxSB_RotateZ->GetThumbPosition());
+     Rz.data[1][0]=-sin(M_PI/180*WxSB_RotateZ->GetThumbPosition());
+     Rz.data[0][1]=sin(M_PI/180*WxSB_RotateZ->GetThumbPosition());
+     Rz.data[1][1]=cos(M_PI/180*WxSB_RotateZ->GetThumbPosition());
+     m=m*Rz;
+     Vector4 v;
+     for(std::vector<Point>::size_type i = 0; i != points.size(); i++) {
+       v.Set(points[i].x,points[i].y,points[i].z);
+       v=m*v;
+       normalization(&v);
+       points[i].x = v.GetX();
+       points[i].y = v.GetY();
+       points[i].z = v.GetZ();
+    }
+     
+    
+     
+     
 }
 
 /*
