@@ -28,6 +28,14 @@ BEGIN_EVENT_TABLE(Project_36Frm,wxFrame)
 	
 	EVT_CLOSE(Project_36Frm::OnClose)
 	
+	EVT_COMMAND_SCROLL(wxID_STOMACHROTATEX,Project_36Frm::WxSB_StomachRotateXScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WXSB_STOMACHROTATEZ,Project_36Frm::WxSB_StomachRotateZScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WXSB_RekaRightRotateY,Project_36Frm::WxSB_RekaRightRotateYScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WXSB_RekaLeftRotateY,Project_36Frm::WxSB_RekaLeftRotateYScroll)
+	
 	EVT_COMMAND_SCROLL(wxID_BARKPRAWYROTATEZ,Project_36Frm::WxSB_HeadRotateZScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_BARKPRAWYROTATEY,Project_36Frm::WxSB_HeadRotateZScroll)
@@ -45,6 +53,8 @@ BEGIN_EVENT_TABLE(Project_36Frm,wxFrame)
 	EVT_COMMAND_SCROLL(ID_WXSB_ROTATEY,Project_36Frm::WxSB_RotateYScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_ROTATEX,Project_36Frm::WxSB_RotateXScroll)
+	
+	EVT_UPDATE_UI(ID_WXPANEL1,Project_36Frm::WxPanel1UpdateUI)
 END_EVENT_TABLE()
 ////Event Table End
 
@@ -70,7 +80,7 @@ void Project_36Frm::CreateGUIControls()
 	this->SetSizer(WxBoxSizer1);
 	this->SetAutoLayout(true);
 
-	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 169), wxSize(231, 61));
+	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 257), wxSize(231, 61));
 	WxBoxSizer1->Add(WxPanel1, 5, wxEXPAND | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
@@ -213,6 +223,67 @@ void Project_36Frm::CreateGUIControls()
 
 	WxST_BarkPrawyRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkPrawyRotateZ"));
 	WxBoxSizer14->Add(WxST_BarkPrawyRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText12 = new wxStaticText(this, ID_WXSTATICTEXT12, _("Reka Lewy"), wxPoint(67, 112), wxDefaultSize, 0, _("WxStaticText12"));
+	WxBoxSizer9->Add(WxStaticText12, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer15 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer9->Add(WxBoxSizer15, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText13 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OY:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText13"));
+	WxBoxSizer15->Add(WxStaticText13, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_RekaLeftRotateY = new wxScrollBar(this, ID_WXSB_RekaLeftRotateY, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_RekaLeftRotateY"));
+	WxSB_RekaLeftRotateY->Enable(false);
+	WxBoxSizer15->Add(WxSB_RekaLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_RekaLeftRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_RekaLeftRotateY"));
+	WxBoxSizer15->Add(WxST_RekaLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText18 = new wxStaticText(this, ID_WXSTATICTEXT18, _("Reka Prawy"), wxPoint(65, 112), wxDefaultSize, 0, _("WxStaticText18"));
+	WxBoxSizer10->Add(WxStaticText18, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer17 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer10->Add(WxBoxSizer17, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText19 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OY:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText19"));
+	WxBoxSizer17->Add(WxStaticText19, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_RekaRightRotateY = new wxScrollBar(this, ID_WXSB_RekaRightRotateY, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_RekaRightRotateY"));
+	WxSB_RekaRightRotateY->Enable(false);
+	WxBoxSizer17->Add(WxSB_RekaRightRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_RekaRightRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_RekaRightRotateY"));
+	WxBoxSizer17->Add(WxST_RekaRightRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText14 = new wxStaticText(this, ID_WXSTATICTEXT14, _("Brzuch"), wxPoint(189, 453), wxDefaultSize, 0, _("WxStaticText14"));
+	WxBoxSizer2->Add(WxStaticText14, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer16 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer2->Add(WxBoxSizer16, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText16 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText16"));
+	WxBoxSizer16->Add(WxStaticText16, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_StomachRotateZ = new wxScrollBar(this, ID_WXSB_STOMACHROTATEZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_StomachRotateZ"));
+	WxSB_StomachRotateZ->Enable(false);
+	WxBoxSizer16->Add(WxSB_StomachRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_StomachRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_StomachRotateZ"));
+	WxBoxSizer16->Add(WxST_StomachRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer18 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer2->Add(WxBoxSizer18, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText20 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OX:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText20"));
+	WxBoxSizer18->Add(WxStaticText20, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_StomachRotateX = new wxScrollBar(this, wxID_STOMACHROTATEX, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_StomachRotateX"));
+	WxSB_StomachRotateX->Enable(false);
+	WxBoxSizer18->Add(WxSB_StomachRotateX, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_StomachRotateX = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_StomachRotateX"));
+	WxBoxSizer18->Add(WxST_StomachRotateX, 0, wxALIGN_CENTER | wxALL, 5);
 
 	SetTitle(_("Project_36"));
 	SetIcon(wxNullIcon);
@@ -402,4 +473,63 @@ void Project_36Frm::WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BarkPrawyRotateZScroll(wxScrollEvent& event)
 {
 	// insert your code here
+}
+
+/*
+ * WxSB_RekaLeftRotateYScroll
+ */
+void Project_36Frm::WxSB_RekaLeftRotateYScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_RekaLeftRotateZScroll
+ */
+void Project_36Frm::WxSB_RekaLeftRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_RekaRightRotateYScroll
+ */
+void Project_36Frm::WxSB_RekaRightRotateYScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_RekaRightRotateZScroll
+ */
+void Project_36Frm::WxSB_RekaRightRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_StomachRotateZScroll
+ */
+void Project_36Frm::WxSB_StomachRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_StomachRotateXScroll
+ */
+void Project_36Frm::WxSB_StomachRotateXScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxPanel1UpdateUI
+ */
+void Project_36Frm::WxPanel1UpdateUI(wxUpdateUIEvent& event)
+{
+	// insert your code here
+	Project_36Frm::repaint();
+	
+	
 }

@@ -63,12 +63,38 @@ class Project_36Frm : public wxFrame
 		void WxSB_BarkLeftRotateZScroll(wxScrollEvent& event);
 		void WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event);
 		void WxSB_BarkPrawyRotateZScroll(wxScrollEvent& event);
+		void WxSB_RekaLeftRotateYScroll(wxScrollEvent& event);
+		void WxSB_RekaLeftRotateZScroll(wxScrollEvent& event);
+		void WxSB_RekaRightRotateYScroll(wxScrollEvent& event);
+		void WxSB_RekaRightRotateZScroll(wxScrollEvent& event);
+		void WxSB_StomachRotateZScroll(wxScrollEvent& event);
+		void WxSB_StomachRotateXScroll(wxScrollEvent& event);
+		void WxPanel1UpdateUI(wxUpdateUIEvent& event);
 		
 	private:
 		//Do not add custom control declarations between
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxStaticText *WxST_StomachRotateX;
+		wxScrollBar *WxSB_StomachRotateX;
+		wxStaticText *WxStaticText20;
+		wxBoxSizer *WxBoxSizer18;
+		wxStaticText *WxST_StomachRotateZ;
+		wxScrollBar *WxSB_StomachRotateZ;
+		wxStaticText *WxStaticText16;
+		wxBoxSizer *WxBoxSizer16;
+		wxStaticText *WxStaticText14;
+		wxStaticText *WxST_RekaRightRotateY;
+		wxScrollBar *WxSB_RekaRightRotateY;
+		wxStaticText *WxStaticText19;
+		wxBoxSizer *WxBoxSizer17;
+		wxStaticText *WxStaticText18;
+		wxStaticText *WxST_RekaLeftRotateY;
+		wxScrollBar *WxSB_RekaLeftRotateY;
+		wxStaticText *WxStaticText13;
+		wxBoxSizer *WxBoxSizer15;
+		wxStaticText *WxStaticText12;
 		wxStaticText *WxST_BarkPrawyRotateZ;
 		wxScrollBar *WxSB_BarkPrawyRotateZ;
 		wxStaticText *WxStaticText15;
@@ -125,6 +151,13 @@ class Project_36Frm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
+			wxID_STOMACHROTATEX = 41,
+			ID_WXSB_STOMACHROTATEZ = 40,
+			ID_WXSTATICTEXT14 = 62,
+			ID_WXSB_RekaRightRotateY = 34,
+			ID_WXSTATICTEXT18 = 53,
+			ID_WXSB_RekaLeftRotateY = 32,
+			ID_WXSTATICTEXT12 = 47,
 			wxID_BARKPRAWYROTATEZ = 23,
 			ID_WXSB_BARKPRAWYROTATEY = 22,
 			ID_WXSTATICTEXT8 = 27,
