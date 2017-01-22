@@ -144,8 +144,8 @@ SupportXPThemes=0
 CompilerSet=9
 CompilerType=9
 
-[Unit7]
-FileName=Nodes.cpp
+[Unit8]
+FileName=Nodes.h
 CompileCpp=1
 Folder=Project1
 Compile=1
@@ -154,8 +154,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit8]
-FileName=Nodes.h
+[Unit7]
+FileName=Nodes.cpp
 CompileCpp=1
 Folder=Project1
 Compile=1

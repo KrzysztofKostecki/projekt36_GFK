@@ -44,9 +44,9 @@ object frmNewForm: TfrmNewForm
     Wx_IDValue = 1
     object WxPanel1: TWxPanel
       Left = 5
-      Top = 67
-      Width = 431
-      Height = 265
+      Top = 169
+      Width = 231
+      Height = 61
       TabOrder = 0
       Wx_BKColor = clBlack
       Wx_Class = 'wxPanel'
@@ -59,6 +59,8 @@ object frmNewForm: TfrmNewForm
       Wx_Hidden = False
       Wx_IDName = 'ID_WXPANEL1'
       Wx_IDValue = 4
+      Wx_Alignment = [wxEXPAND]
+      Wx_StretchFactor = 5
       Wx_PaneCaption = 'WxPanel1'
       Wx_PaneName = 'WxPanel1_Pane'
       Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -77,7 +79,7 @@ object frmNewForm: TfrmNewForm
       Wx_Floating_Y_Pos = 0
     end
     object WxBoxSizer2: TWxBoxSizer
-      Left = 451
+      Left = 251
       Top = 10
       Width = 418
       Height = 380

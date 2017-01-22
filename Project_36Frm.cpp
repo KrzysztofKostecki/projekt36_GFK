@@ -70,8 +70,8 @@ void Project_36Frm::CreateGUIControls()
 	this->SetSizer(WxBoxSizer1);
 	this->SetAutoLayout(true);
 
-	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 67), wxSize(431, 265));
-	WxBoxSizer1->Add(WxPanel1, 0, wxALIGN_CENTER | wxALL, 5);
+	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 169), wxSize(231, 61));
+	WxBoxSizer1->Add(WxPanel1, 5, wxEXPAND | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer1->Add(WxBoxSizer2, 0, wxALIGN_CENTER | wxALL | wxLEFT | wxRIGHT | wxTOP | wxBOTTOM, 10);
