@@ -575,32 +575,6 @@ void Project_36Frm::repaint()
  #include "vecmat.h"
 
 
-
-void translate(double a, double b, double c, double* x1, double* y1, double* z1, double* x2, double* y2, double* z2){
-    Matrix4 tran;
-    Vector4 v1, v2, w;
-    v1.Set(*x1, *y1, *z1);
-    v2.Set(*x2, *y2, *z2);
-    tran.data[0][0] = 1.0;
-    tran.data[1][1] = 1.0;
-    tran.data[2][2] = 1.0;
-    tran.data[0][3] = a;
-    tran.data[1][3] = b;
-    tran.data[2][3] = c;
-    
-    
-    w = tran*v1;
-    *x1 = w.GetX();
-    *y1 = w.GetY();
-    *z1 = w.GetZ();
-    
-    w = tran*v2;
-    *x2 = w.GetX();
-    *y2 = w.GetY();
-    *z2 = w.GetZ();
-    
-}
-
 void translate(double a, double b, double c, Point* point){
     Matrix4 tran;
     Vector4 v1, w;
@@ -683,92 +657,6 @@ void rotateZ(double alpha, Point* point){
 }
 
 
-
-
-void rotateX(double alpha, double* x1, double* y1, double* z1, double* x2, double* y2, double* z2){
-    Matrix4 m;
-    double a = alpha*M_PI/180;
-    
-    Vector4 v1, v2, w;
-    v1.Set(*x1, *y1, *z1);
-    v2.Set(*x2, *y2, *z2);
-    
-    m.data[0][0] = 1.0;
-    m.data[1][1] = cos(a);
-    m.data[2][2] = cos(a);
-    m.data[1][2] = -sin(a);
-    m.data[2][1] = sin(a);
-    
-    w = m*v1;
-    *x1 = w.GetX();
-    *y1 = w.GetY();
-    *z1 = w.GetZ();
-    
-    w = m*v2;
-    *x2 = w.GetX();
-    *y2 = w.GetY();
-    *z2 = w.GetZ();
-    
-}
-
-void rotateY(double alpha, double* x1, double* y1, double* z1, double* x2, double* y2, double* z2){
-    Matrix4 m;
-    double a = alpha*M_PI/180;
-
-    
-    Vector4 v1, v2, w;
-    v1.Set(*x1, *y1, *z1);
-    v2.Set(*x2, *y2, *z2);
-    
-    m.data[0][0] = cos(a);
-    m.data[0][2] = sin(a);
-    m.data[1][1] = 1.0;
-    m.data[2][0] = -sin(a);
-    m.data[2][2] = cos(a);
-    
-    w = m*v1;
-    *x1 = w.GetX();
-    *y1 = w.GetY();
-    *z1 = w.GetZ();
-    
-    w = m*v2;
-    *x2 = w.GetX();
-    *y2 = w.GetY();
-    *z2 = w.GetZ();
-    
-}
-
-void rotateZ(double alpha, double* x1, double* y1, double* z1, double* x2, double* y2, double* z2){
-    Matrix4 m;
-    double a = alpha*M_PI/180;
-    //double a = alpha;
-    
-    Vector4 v1, v2, w;
-    v1.Set(*x1, *y1, *z1);
-    v2.Set(*x2, *y2, *z2);
-    
-    m.data[0][0] = cos(a);
-    m.data[0][1] = -sin(a);
-    m.data[1][0] = sin(a);
-    m.data[1][1] = cos(a);
-    m.data[2][2] = 1.0;
-    
-    w = m*v1;
-    *x1 = w.GetX();
-    *y1 = w.GetY();
-    *z1 = w.GetZ();
-    
-    w = m*v2;
-    *x2 = w.GetX();
-    *y2 = w.GetY();
-    *z2 = w.GetZ();
-    
-}
-
-
-
-
-
 /*
  * Funkcja aktualizuj¹ca punkty
  */
@@ -807,11 +695,11 @@ void Project_36Frm::updatePoints()
 	b = points[NECK].y;
 	c = points[NECK].z;
 
-	translate(-a,-b,-c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-	rotateZ(alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
+	translate(-a,-b,-c, &(points[HEAD]));
+	rotateZ(alpha, &(points[HEAD]));
 	alpha = WxSB_HeadRotateX->GetThumbPosition();
-	rotateX(alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-	translate(a , b, c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
+	rotateX(-alpha, &(points[HEAD]));
+	translate(a , b, c, &(points[HEAD]));
 	
 	
 	//HANDS ROTATION
