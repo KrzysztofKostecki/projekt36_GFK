@@ -76,6 +76,9 @@ class Project_36Frm : public wxFrame
 		void WxSB_BiodroPraweRotateZScroll(wxScrollEvent& event);
 		void WxSB_KolanoLeweRotateZScroll(wxScrollEvent& event);
 		void WxSB_KolanoPraweRotateZScroll(wxScrollEvent& event);
+		void WxSB_BarkLeftRotateZScroll0(wxScrollEvent& event);
+		void WxSB_BarkPrawyRotateYScroll0(wxScrollEvent& event);
+		void WxSB_BarkPrawyRotateZScroll0(wxScrollEvent& event);
 		
 	private:
 		//Do not add custom control declarations between
@@ -96,7 +99,7 @@ class Project_36Frm : public wxFrame
 		wxStaticText *WxStaticText30;
 		wxBoxSizer *WxBoxSizer25;
 		wxStaticText *WxStaticText29;
-		wxStaticText *WxStaticText28;
+		wxStaticText *WxST_KolanoLeweRotateZ;
 		wxScrollBar *WxSB_KolanoLeweRotateZ;
 		wxStaticText *WxStaticText27;
 		wxBoxSizer *WxBoxSizer24;
@@ -206,12 +209,12 @@ class Project_36Frm : public wxFrame
 			ID_WXSTATICTEXT14 = 62,
 			ID_WXSB_RekaRightRotateY = 34,
 			ID_WXSTATICTEXT18 = 53,
-			wxID_BARKPRAWYROTATEZ = 23,
-			ID_WXSB_BARKPRAWYROTATEY = 22,
+			wxID_BARKPRAWYROTATEZ = 101,
+			ID_WXSB_BARKPRAWYROTATEY = 100,
 			ID_WXSTATICTEXT8 = 27,
 			ID_WXSB_RekaLeftRotateY = 32,
 			ID_WXSTATICTEXT12 = 47,
-			ID_WXSB_BarkLeftRotateZ = 21,
+			ID_WXSB_BarkLeftRotateZ = 1002,
 			ID_WXSB_BarkLeftRotateY = 20,
 			ID_WXSTATICTEXT7 = 26,
 			ID_WXSB_HEADROTATEX = 18,

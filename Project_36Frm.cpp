@@ -46,13 +46,13 @@ BEGIN_EVENT_TABLE(Project_36Frm,wxFrame)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_RekaRightRotateY,Project_36Frm::WxSB_RekaRightRotateYScroll)
 	
-	EVT_COMMAND_SCROLL(wxID_BARKPRAWYROTATEZ,Project_36Frm::WxSB_HeadRotateZScroll)
+	EVT_COMMAND_SCROLL(wxID_BARKPRAWYROTATEZ,Project_36Frm::WxSB_BarkPrawyRotateZScroll0)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_BARKPRAWYROTATEY,Project_36Frm::WxSB_HeadRotateZScroll)
+	EVT_COMMAND_SCROLL(ID_WXSB_BARKPRAWYROTATEY,Project_36Frm::WxSB_BarkPrawyRotateYScroll0)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_RekaLeftRotateY,Project_36Frm::WxSB_RekaLeftRotateYScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateZ,Project_36Frm::WxSB_BarkLeftRotateYScroll)
+	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateZ,Project_36Frm::WxSB_BarkLeftRotateZScroll0)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateY,Project_36Frm::WxSB_BarkLeftRotateYScroll)
 	
@@ -351,8 +351,8 @@ void Project_36Frm::CreateGUIControls()
 	WxSB_KolanoLeweRotateZ->Enable(false);
 	WxBoxSizer24->Add(WxSB_KolanoLeweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText28 = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxStaticText28"));
-	WxBoxSizer24->Add(WxStaticText28, 0, wxALIGN_CENTER | wxALL, 5);
+	WxST_KolanoLeweRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_KolanoLeweRotateZ"));
+	WxBoxSizer24->Add(WxST_KolanoLeweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxStaticText29 = new wxStaticText(this, ID_WXSTATICTEXT29, _("Biodro Prawe"), wxPoint(60, 5), wxDefaultSize, 0, _("WxStaticText29"));
 	WxBoxSizer21->Add(WxStaticText29, 0, wxALIGN_CENTER | wxALL, 5);
@@ -416,10 +416,52 @@ void Project_36Frm::CreateGUIControls()
 	WxSB_RotateZ->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_RotateZ->Enable(true);
 	
+	
+	
+	
+	
 	WxSB_HeadRotateZ->SetScrollbar(0, 1, 201, 1,true);
 	WxSB_HeadRotateZ->Enable(true);
+	WxSB_HeadRotateX->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_HeadRotateX->Enable(true);
 	
+	WxSB_BarkLeftRotateY->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkLeftRotateY->Enable(true);
+	WxSB_BarkLeftRotateZ->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkLeftRotateZ->Enable(true);
 	
+	WxSB_BarkPrawyRotateY->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkPrawyRotateY->Enable(true);
+	WxSB_BarkPrawyRotateZ->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkPrawyRotateZ->Enable(true);
+	
+    WxSB_RekaLeftRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_RekaLeftRotateY->Enable(true);
+    WxSB_RekaRightRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_RekaRightRotateY->Enable(true);
+    
+    WxSB_StomachRotateX->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_StomachRotateX->Enable(true);
+    WxSB_StomachRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_StomachRotateZ->Enable(true);
+    
+    WxSB_BiodroLeweRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroLeweRotateY->Enable(true);
+    WxSB_BiodroPraweRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroPraweRotateY->Enable(true);
+    
+    WxSB_BiodroLeweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroLeweRotateZ->Enable(true);
+    WxSB_BiodroPraweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroPraweRotateZ->Enable(true);
+    
+    WxSB_KolanoPraweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_KolanoPraweRotateZ->Enable(true);
+    WxSB_KolanoLeweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_KolanoLeweRotateZ->Enable(true);
+    
+    
+    
 	
 }
 
@@ -754,7 +796,11 @@ void Project_36Frm::WxSB_HeadRotateXScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BarkLeftRotateYScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BarkLeftRotateY->GetThumbPosition());
+    WxST_BarkLeftRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -762,7 +808,11 @@ void Project_36Frm::WxSB_BarkLeftRotateYScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BarkLeftRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BarkLeftRotateZ->GetThumbPosition());
+    WxST_BarkLeftRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -770,7 +820,11 @@ void Project_36Frm::WxSB_BarkLeftRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BarkPrawyRotateY->GetThumbPosition());
+    WxST_BarkPrawyRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -778,7 +832,11 @@ void Project_36Frm::WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BarkPrawyRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BarkPrawyRotateZ->GetThumbPosition());
+    WxST_BarkPrawyRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -786,31 +844,28 @@ void Project_36Frm::WxSB_BarkPrawyRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_RekaLeftRotateYScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_RekaLeftRotateY->GetThumbPosition());
+    WxST_RekaLeftRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
  * WxSB_RekaLeftRotateZScroll
  */
-void Project_36Frm::WxSB_RekaLeftRotateZScroll(wxScrollEvent& event)
-{
-	// insert your code here
-}
+
 
 /*
  * WxSB_RekaRightRotateYScroll
  */
 void Project_36Frm::WxSB_RekaRightRotateYScroll(wxScrollEvent& event)
 {
-	// insert your code here
-}
-
-/*
- * WxSB_RekaRightRotateZScroll
- */
-void Project_36Frm::WxSB_RekaRightRotateZScroll(wxScrollEvent& event)
-{
-	// insert your code here
+	wxString str;
+    str<<(WxSB_RekaRightRotateY->GetThumbPosition());
+    WxST_RekaRightRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -818,7 +873,11 @@ void Project_36Frm::WxSB_RekaRightRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_StomachRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_StomachRotateZ->GetThumbPosition());
+    WxST_StomachRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -826,7 +885,11 @@ void Project_36Frm::WxSB_StomachRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_StomachRotateXScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_StomachRotateX->GetThumbPosition());
+    WxST_StomachRotateX->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -845,7 +908,11 @@ void Project_36Frm::WxPanel1UpdateUI(wxUpdateUIEvent& event)
  */
 void Project_36Frm::WxSB_BiodroLeweRotateYScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BiodroLeweRotateY->GetThumbPosition());
+    WxST_BiodroLeweRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -853,7 +920,11 @@ void Project_36Frm::WxSB_BiodroLeweRotateYScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BiodroLeweRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BiodroLeweRotateZ->GetThumbPosition());
+    WxST_BiodroLeweRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -861,7 +932,11 @@ void Project_36Frm::WxSB_BiodroLeweRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BiodroPraweRotateYScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BiodroPraweRotateY->GetThumbPosition());
+    WxST_BiodroPraweRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -869,7 +944,11 @@ void Project_36Frm::WxSB_BiodroPraweRotateYScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_BiodroPraweRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_BiodroPraweRotateZ->GetThumbPosition());
+    WxST_BiodroPraweRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -877,7 +956,11 @@ void Project_36Frm::WxSB_BiodroPraweRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_KolanoLeweRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_KolanoLeweRotateZ->GetThumbPosition());
+    WxST_KolanoLeweRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }
 
 /*
@@ -885,5 +968,45 @@ void Project_36Frm::WxSB_KolanoLeweRotateZScroll(wxScrollEvent& event)
  */
 void Project_36Frm::WxSB_KolanoPraweRotateZScroll(wxScrollEvent& event)
 {
-	// insert your code here
+	wxString str;
+    str<<(WxSB_KolanoPraweRotateZ->GetThumbPosition());
+    WxST_KolanoPraweRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
+}
+
+/*
+ * WxSB_BarkLeftRotateZScroll0
+ */
+void Project_36Frm::WxSB_BarkLeftRotateZScroll0(wxScrollEvent& event)
+{
+	wxString str;
+    str<<(WxSB_BarkLeftRotateZ->GetThumbPosition());
+    WxST_BarkLeftRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
+}
+
+/*
+ * WxSB_BarkPrawyRotateYScroll0
+ */
+void Project_36Frm::WxSB_BarkPrawyRotateYScroll0(wxScrollEvent& event)
+{
+	wxString str;
+    str<<(WxSB_BarkPrawyRotateY->GetThumbPosition());
+    WxST_BarkPrawyRotateY->SetLabel(str);
+    updatePoints();
+    repaint();
+}
+
+/*
+ * WxSB_BarkPrawyRotateZScroll0
+ */
+void Project_36Frm::WxSB_BarkPrawyRotateZScroll0(wxScrollEvent& event)
+{
+	wxString str;
+    str<<(WxSB_BarkPrawyRotateZ->GetThumbPosition());
+    WxST_BarkPrawyRotateZ->SetLabel(str);
+    updatePoints();
+    repaint();
 }

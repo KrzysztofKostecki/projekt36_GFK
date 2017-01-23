@@ -922,14 +922,14 @@ object frmNewForm: TfrmNewForm
               Height = 17
               PageSize = 0
               TabOrder = 1
-              EVT_COMMAND_SCROLL = 'WxSB_BarkLeftRotateYScroll'
+              EVT_COMMAND_SCROLL = 'WxSB_BarkLeftRotateZScroll0'
               Wx_Class = 'wxScrollBar'
               Wx_ControlOrientation = wxControlVertical
               Wx_Enabled = False
               Wx_GeneralStyle = []
               Wx_Hidden = False
               Wx_IDName = 'ID_WXSB_BarkLeftRotateZ'
-              Wx_IDValue = 21
+              Wx_IDValue = 1002
               Wx_SBOrientation = wxSB_HORIZONTAL
               Wx_PaneCaption = 'WxScrollBar1'
               Wx_PaneName = 'WxScrollBar1_Pane'
@@ -1220,14 +1220,14 @@ object frmNewForm: TfrmNewForm
               Height = 17
               PageSize = 0
               TabOrder = 1
-              EVT_COMMAND_SCROLL = 'WxSB_HeadRotateZScroll'
+              EVT_COMMAND_SCROLL = 'WxSB_BarkPrawyRotateYScroll0'
               Wx_Class = 'wxScrollBar'
               Wx_ControlOrientation = wxControlVertical
               Wx_Enabled = False
               Wx_GeneralStyle = []
               Wx_Hidden = False
               Wx_IDName = 'ID_WXSB_BARKPRAWYROTATEY'
-              Wx_IDValue = 22
+              Wx_IDValue = 100
               Wx_SBOrientation = wxSB_HORIZONTAL
               Wx_PaneCaption = 'WxScrollBar1'
               Wx_PaneName = 'WxScrollBar1_Pane'
@@ -1330,14 +1330,14 @@ object frmNewForm: TfrmNewForm
               Height = 17
               PageSize = 0
               TabOrder = 1
-              EVT_COMMAND_SCROLL = 'WxSB_HeadRotateZScroll'
+              EVT_COMMAND_SCROLL = 'WxSB_BarkPrawyRotateZScroll0'
               Wx_Class = 'wxScrollBar'
               Wx_ControlOrientation = wxControlVertical
               Wx_Enabled = False
               Wx_GeneralStyle = []
               Wx_Hidden = False
               Wx_IDName = 'wxID_BARKPRAWYROTATEZ'
-              Wx_IDValue = 23
+              Wx_IDValue = 101
               Wx_SBOrientation = wxSB_HORIZONTAL
               Wx_PaneCaption = 'WxScrollBar1'
               Wx_PaneName = 'WxScrollBar1_Pane'
@@ -2204,7 +2204,7 @@ object frmNewForm: TfrmNewForm
               Wx_Floating_X_Pos = 0
               Wx_Floating_Y_Pos = 0
             end
-            object WxStaticText28: TWxStaticText
+            object WxST_KolanoLeweRotateZ: TWxStaticText
               Left = 169
               Top = 5
               Width = 10
