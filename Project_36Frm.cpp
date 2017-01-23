@@ -522,7 +522,7 @@ void Project_36Frm::initPoints()
     points[LKNEE] = Point(-0.4, -0.8, 0);
     points[RKNEE] = Point(0.4, -0.8, 0);
     points[LFOOT] = Point(-0.65, -1.1, 0);
-    points[RFOOT] = Point(0.65, -1.1, 1.0);
+    points[RFOOT] = Point(0.65, -1.1, 0);
     points[LARM] = Point(-0.15, 0.5, 0);
     points[RARM] = Point(0.15, 0.5, 0);
     points[LELBOW] = Point(-0.4, 0.5, 0);
@@ -553,7 +553,7 @@ void Project_36Frm::repaint()
     }
     
     dc.DrawLine(nodes[HEAD], nodes[NECK]);
-    dc.DrawLine(nodes[NECK], nodes[HIP]);
+    dc.DrawLine(nodes[NECK], nodes[SPINE]);
     dc.DrawLine(nodes[HIP], nodes[SPINE]);
     dc.DrawLine(nodes[HIP], nodes[LLEG]);
     dc.DrawLine(nodes[HIP], nodes[RLEG]);
@@ -600,6 +600,89 @@ void translate(double a, double b, double c, double* x1, double* y1, double* z1,
     *z2 = w.GetZ();
     
 }
+
+void translate(double a, double b, double c, Point* point){
+    Matrix4 tran;
+    Vector4 v1, w;
+    v1.Set(point->x, point->y, point->z);
+
+    tran.data[0][0] = 1.0;
+    tran.data[1][1] = 1.0;
+    tran.data[2][2] = 1.0;
+    tran.data[0][3] = a;
+    tran.data[1][3] = b;
+    tran.data[2][3] = c;
+    
+    
+    w = tran*v1;
+    point->x = w.GetX();
+    point->y = w.GetY();
+    point->z = w.GetZ();
+    
+}
+
+
+void rotateX(double alpha, Point* point){
+    Matrix4 m;
+    double a = alpha*M_PI/180;
+    
+    Vector4 v1, w;
+    v1.Set(point->x, point->y, point->z);
+    
+    m.data[0][0] = 1.0;
+    m.data[1][1] = cos(a);
+    m.data[2][2] = cos(a);
+    m.data[1][2] = -sin(a);
+    m.data[2][1] = sin(a);
+    
+    w = m*v1;
+    point->x = w.GetX();
+    point->y = w.GetY();
+    point->z = w.GetZ();
+}
+
+
+void rotateY(double alpha, Point* point){
+    Matrix4 m;
+    double a = alpha*M_PI/180;
+    
+    Vector4 v1, w;
+    v1.Set(point->x, point->y, point->z);
+    
+    m.data[0][0] = cos(a);
+    m.data[0][2] = sin(a);
+    m.data[1][1] = 1.0;
+    m.data[2][0] = -sin(a);
+    m.data[2][2] = cos(a);
+    
+    w = m*v1;
+    point->x = w.GetX();
+    point->y = w.GetY();
+    point->z = w.GetZ();
+}
+
+
+
+void rotateZ(double alpha, Point* point){
+    Matrix4 m;
+    double a = alpha*M_PI/180;
+    
+    Vector4 v1, w;
+    v1.Set(point->x, point->y, point->z);
+    
+    m.data[0][0] = cos(a);
+    m.data[0][1] = -sin(a);
+    m.data[1][0] = sin(a);
+    m.data[1][1] = cos(a);
+    m.data[2][2] = 1.0;
+    
+    w = m*v1;
+    point->x = w.GetX();
+    point->y = w.GetY();
+    point->z = w.GetZ();
+}
+
+
 
 
 void rotateX(double alpha, double* x1, double* y1, double* z1, double* x2, double* y2, double* z2){
@@ -709,24 +792,169 @@ void normalization(Vector4 *v){
 }*/
 void Project_36Frm::updatePoints()
 {
-    Project_36Frm::initPoints();
+       Project_36Frm::initPoints();
 	/* TODO (#1#): Implement Project_36Frm::updatePoints() */
 	
+	double alpha;
+	double a,b,c;
 	
 	//HEAD rotation
-    double alpha = (WxSB_HeadRotateZ->GetThumbPosition());
+    alpha = (WxSB_HeadRotateZ->GetThumbPosition());
+
 	
-	double a, b, c;
+	a, b, c;
 	a = points[NECK].x;
 	b = points[NECK].y;
 	c = points[NECK].z;
 
 	translate(-a,-b,-c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
 	rotateZ(alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
+	alpha = WxSB_HeadRotateX->GetThumbPosition();
+	rotateX(alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
 	translate(a , b, c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
+	
+	
+	//HANDS ROTATION
+	
+	//LEFT
+	alpha = (WxSB_RekaLeftRotateY->GetThumbPosition());
+	a = points[LELBOW].x;
+	b = points[LELBOW].y;
+	c = points[LELBOW].z;
 
+	translate(-a,-b,-c, &(points[LHAND]));
+	rotateY(-alpha, &(points[LHAND]));
+	translate(a , b, c, &(points[LHAND]));
+
+    //RIGHT
+    alpha = (WxSB_RekaRightRotateY->GetThumbPosition());
+    a = points[RELBOW].x;
+	b = points[RELBOW].y;
+	c = points[RELBOW].z;
+
+	translate(-a,-b,-c, &(points[RHAND]));
+	rotateY(alpha, &(points[RHAND]));
+	translate(a,b,c, &(points[RHAND]));
+
+
+    //ARMS ROTATION
+    //LEFT
+	a = points[LARM].x;
+	b = points[LARM].y;
+	c = points[LARM].z;
+	
+    alpha = (WxSB_BarkLeftRotateY->GetThumbPosition());
+	translate(-a,-b,-c, &(points[LELBOW]));
+	translate(-a,-b,-c, &(points[LHAND]));
+	rotateY(-alpha, &points[LELBOW]);
+	rotateY(-alpha, &points[LHAND]);
+	alpha = (WxSB_BarkLeftRotateZ->GetThumbPosition());
+	rotateZ(-alpha, &points[LELBOW]);
+	rotateZ(-alpha, &points[LHAND]);
+	translate(a,b,c, &(points[LELBOW]));
+	translate(a,b,c, &(points[LHAND]));
 	
 	
+	//RIGHT
+	a = points[RARM].x;
+	b = points[RARM].y;
+	c = points[RARM].z;
+
+    alpha = (WxSB_BarkPrawyRotateY->GetThumbPosition());
+	translate(-a,-b,-c, &(points[RELBOW]));
+	translate(-a,-b,-c, &(points[RHAND]));
+	rotateY(alpha, &points[RELBOW]);
+	rotateY(alpha, &points[RHAND]);
+	alpha = (WxSB_BarkPrawyRotateZ->GetThumbPosition());
+	rotateZ(alpha, &points[RELBOW]);
+	rotateZ(alpha, &points[RHAND]);
+	translate(a,b,c, &(points[RELBOW]));
+	translate(a,b,c, &(points[RHAND]));
+	
+	
+	//STOMACH ROTATION
+	
+	alpha = (WxSB_StomachRotateZ->GetThumbPosition());
+
+	rotateZ(-alpha, &points[RELBOW]);
+	rotateZ(-alpha, &points[RHAND]);
+	rotateZ(-alpha, &points[RARM]);
+	rotateZ(-alpha, &points[LELBOW]);
+	rotateZ(-alpha, &points[LHAND]);
+	rotateZ(-alpha, &points[LARM]);
+	rotateZ(-alpha, &points[NECK]);
+	rotateZ(-alpha, &points[HEAD]);
+	
+	alpha = (WxSB_StomachRotateX->GetThumbPosition());
+
+	rotateX(-alpha, &points[RELBOW]);
+	rotateX(-alpha, &points[RHAND]);
+	rotateX(-alpha, &points[RARM]);
+	rotateX(-alpha, &points[LELBOW]);
+	rotateX(-alpha, &points[LHAND]);
+	rotateX(-alpha, &points[LARM]);
+	rotateX(-alpha, &points[NECK]);
+	rotateX(-alpha, &points[HEAD]);
+	
+	
+	//KNEES ROTATION
+	//LEFT
+	alpha = (WxSB_KolanoLeweRotateZ->GetThumbPosition());
+	a = points[LKNEE].x;
+	b = points[LKNEE].y;
+	c = points[LKNEE].z;
+
+	translate(-a,-b,-c, &(points[LFOOT]));
+	rotateX(-alpha, &(points[LFOOT]));
+	translate(a , b, c, &(points[LFOOT]));
+	
+	
+	//RIGHT
+	alpha = (WxSB_KolanoPraweRotateZ->GetThumbPosition());
+	a = points[RKNEE].x;
+	b = points[RKNEE].y;
+	c = points[RKNEE].z;
+
+	translate(-a,-b,-c, &(points[RFOOT]));
+	rotateX(-alpha, &(points[RFOOT]));
+	translate(a , b, c, &(points[RFOOT]));
+	
+	
+	//LEGS ROTATION
+	//LEFT
+	a = points[LLEG].x;
+	b = points[LLEG].y;
+	c = points[LLEG].z;
+	
+    alpha = (WxSB_BiodroLeweRotateZ->GetThumbPosition());
+	translate(-a,-b,-c, &(points[LKNEE]));
+	translate(-a,-b,-c, &(points[LFOOT]));
+	rotateZ(-alpha, &points[LKNEE]);
+	rotateZ(-alpha, &points[LFOOT]);
+	alpha = (WxSB_BiodroLeweRotateY->GetThumbPosition());
+	rotateX(alpha, &points[LKNEE]);
+	rotateX(alpha, &points[LFOOT]);
+	translate(a,b,c, &(points[LKNEE]));
+	translate(a,b,c, &(points[LFOOT]));
+	
+	
+	//RIGHT
+	a = points[RLEG].x;
+	b = points[RLEG].y;
+	c = points[RLEG].z;
+    alpha = (WxSB_BiodroPraweRotateZ->GetThumbPosition());
+	translate(-a,-b,-c, &(points[RKNEE]));
+	translate(-a,-b,-c, &(points[RFOOT]));
+	rotateZ(alpha, &points[RKNEE]);
+	rotateZ(alpha, &points[RFOOT]);
+	alpha = (WxSB_BiodroPraweRotateY->GetThumbPosition());
+	rotateX(-alpha, &points[RKNEE]);
+	rotateX(-alpha, &points[RFOOT]);
+	translate(a,b,c, &(points[RKNEE]));
+	translate(a,b,c, &(points[RFOOT]));
+
+
+
 	
 	//whole skeleton rotation
 	 Matrix4 m;
@@ -763,7 +991,6 @@ void Project_36Frm::updatePoints()
     }
      
     
-     
      
 }
 
