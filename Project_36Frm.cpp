@@ -28,17 +28,29 @@ BEGIN_EVENT_TABLE(Project_36Frm,wxFrame)
 	
 	EVT_CLOSE(Project_36Frm::OnClose)
 	
+	EVT_COMMAND_SCROLL(ID_WxSB_KolanoPraweRotateZ,Project_36Frm::WxSB_RekaRightRotateYScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WxSB_BiodroPraweRotateZ,Project_36Frm::WxSB_HeadRotateZScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WxSB_BiodroPraweRotateY,Project_36Frm::WxSB_HeadRotateZScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WxSB_KolanoLeweRotateZ,Project_36Frm::WxSB_RekaLeftRotateYScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WXSB_WxSB_BiodroLeweRotateZ,Project_36Frm::WxSB_BarkLeftRotateYScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WXSB_WxSB_BiodroLeweRotateY,Project_36Frm::WxSB_BarkLeftRotateYScroll)
+	
 	EVT_COMMAND_SCROLL(wxID_STOMACHROTATEX,Project_36Frm::WxSB_StomachRotateXScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_STOMACHROTATEZ,Project_36Frm::WxSB_StomachRotateZScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_RekaRightRotateY,Project_36Frm::WxSB_RekaRightRotateYScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_RekaLeftRotateY,Project_36Frm::WxSB_RekaLeftRotateYScroll)
-	
 	EVT_COMMAND_SCROLL(wxID_BARKPRAWYROTATEZ,Project_36Frm::WxSB_HeadRotateZScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_BARKPRAWYROTATEY,Project_36Frm::WxSB_HeadRotateZScroll)
+	
+	EVT_COMMAND_SCROLL(ID_WXSB_RekaLeftRotateY,Project_36Frm::WxSB_RekaLeftRotateYScroll)
 	
 	EVT_COMMAND_SCROLL(ID_WXSB_BarkLeftRotateZ,Project_36Frm::WxSB_BarkLeftRotateYScroll)
 	
@@ -80,7 +92,7 @@ void Project_36Frm::CreateGUIControls()
 	this->SetSizer(WxBoxSizer1);
 	this->SetAutoLayout(true);
 
-	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 257), wxSize(231, 61));
+	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 369), wxSize(231, 61));
 	WxBoxSizer1->Add(WxPanel1, 5, wxEXPAND | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
@@ -192,6 +204,22 @@ void Project_36Frm::CreateGUIControls()
 	WxST_BarkLeftRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkLeftRotateZ"));
 	WxBoxSizer13->Add(WxST_BarkLeftRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
 
+	WxStaticText12 = new wxStaticText(this, ID_WXSTATICTEXT12, _("Reka Lewy"), wxPoint(67, 112), wxDefaultSize, 0, _("WxStaticText12"));
+	WxBoxSizer9->Add(WxStaticText12, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer15 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer9->Add(WxBoxSizer15, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText13 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OY:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText13"));
+	WxBoxSizer15->Add(WxStaticText13, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_RekaLeftRotateY = new wxScrollBar(this, ID_WXSB_RekaLeftRotateY, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_RekaLeftRotateY"));
+	WxSB_RekaLeftRotateY->Enable(false);
+	WxBoxSizer15->Add(WxSB_RekaLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_RekaLeftRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_RekaLeftRotateY"));
+	WxBoxSizer15->Add(WxST_RekaLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
 	WxBoxSizer10 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer8->Add(WxBoxSizer10, 0, wxALIGN_CENTER | wxALL, 5);
 
@@ -223,22 +251,6 @@ void Project_36Frm::CreateGUIControls()
 
 	WxST_BarkPrawyRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BarkPrawyRotateZ"));
 	WxBoxSizer14->Add(WxST_BarkPrawyRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxStaticText12 = new wxStaticText(this, ID_WXSTATICTEXT12, _("Reka Lewy"), wxPoint(67, 112), wxDefaultSize, 0, _("WxStaticText12"));
-	WxBoxSizer9->Add(WxStaticText12, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxBoxSizer15 = new wxBoxSizer(wxHORIZONTAL);
-	WxBoxSizer9->Add(WxBoxSizer15, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxStaticText13 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OY:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText13"));
-	WxBoxSizer15->Add(WxStaticText13, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxSB_RekaLeftRotateY = new wxScrollBar(this, ID_WXSB_RekaLeftRotateY, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_RekaLeftRotateY"));
-	WxSB_RekaLeftRotateY->Enable(false);
-	WxBoxSizer15->Add(WxSB_RekaLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
-
-	WxST_RekaLeftRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_RekaLeftRotateY"));
-	WxBoxSizer15->Add(WxST_RekaLeftRotateY, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxStaticText18 = new wxStaticText(this, ID_WXSTATICTEXT18, _("Reka Prawy"), wxPoint(65, 112), wxDefaultSize, 0, _("WxStaticText18"));
 	WxBoxSizer10->Add(WxStaticText18, 0, wxALIGN_CENTER | wxALL, 5);
@@ -284,6 +296,108 @@ void Project_36Frm::CreateGUIControls()
 
 	WxST_StomachRotateX = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_StomachRotateX"));
 	WxBoxSizer18->Add(WxST_StomachRotateX, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText17 = new wxStaticText(this, ID_WXSTATICTEXT17, _("Nogi"), wxPoint(194, 560), wxDefaultSize, 0, _("WxStaticText17"));
+	WxBoxSizer2->Add(WxStaticText17, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer19 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer2->Add(WxBoxSizer19, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer20 = new wxBoxSizer(wxVERTICAL);
+	WxBoxSizer19->Add(WxBoxSizer20, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer21 = new wxBoxSizer(wxVERTICAL);
+	WxBoxSizer19->Add(WxBoxSizer21, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText21 = new wxStaticText(this, ID_WXSTATICTEXT21, _("Biodro Lewe"), wxPoint(62, 5), wxDefaultSize, 0, _("WxStaticText21"));
+	WxBoxSizer20->Add(WxStaticText21, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer22 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer20->Add(WxBoxSizer22, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText22 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OY:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText22"));
+	WxBoxSizer22->Add(WxStaticText22, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_BiodroLeweRotateY = new wxScrollBar(this, ID_WXSB_WxSB_BiodroLeweRotateY, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_BiodroLeweRotateY"));
+	WxSB_BiodroLeweRotateY->Enable(false);
+	WxBoxSizer22->Add(WxSB_BiodroLeweRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_BiodroLeweRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BiodroLeweRotateY"));
+	WxBoxSizer22->Add(WxST_BiodroLeweRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer23 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer20->Add(WxBoxSizer23, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText24 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText24"));
+	WxBoxSizer23->Add(WxStaticText24, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_BiodroLeweRotateZ = new wxScrollBar(this, ID_WXSB_WxSB_BiodroLeweRotateZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_BiodroLeweRotateZ"));
+	WxSB_BiodroLeweRotateZ->Enable(false);
+	WxBoxSizer23->Add(WxSB_BiodroLeweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_BiodroLeweRotateZ = new wxStaticText(this, ID_WXST_WxST_BiodroLeweRotateZ, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BiodroLeweRotateZ"));
+	WxBoxSizer23->Add(WxST_BiodroLeweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText26 = new wxStaticText(this, ID_WXSTATICTEXT26, _("Kolano Lewe"), wxPoint(61, 112), wxDefaultSize, 0, _("WxStaticText26"));
+	WxBoxSizer20->Add(WxStaticText26, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer24 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer20->Add(WxBoxSizer24, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText27 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText27"));
+	WxBoxSizer24->Add(WxStaticText27, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_KolanoLeweRotateZ = new wxScrollBar(this, ID_WxSB_KolanoLeweRotateZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_KolanoLeweRotateZ"));
+	WxSB_KolanoLeweRotateZ->Enable(false);
+	WxBoxSizer24->Add(WxSB_KolanoLeweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText28 = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxStaticText28"));
+	WxBoxSizer24->Add(WxStaticText28, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText29 = new wxStaticText(this, ID_WXSTATICTEXT29, _("Biodro Prawe"), wxPoint(60, 5), wxDefaultSize, 0, _("WxStaticText29"));
+	WxBoxSizer21->Add(WxStaticText29, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer25 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer21->Add(WxBoxSizer25, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText30 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OY:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText30"));
+	WxBoxSizer25->Add(WxStaticText30, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_BiodroPraweRotateY = new wxScrollBar(this, ID_WxSB_BiodroPraweRotateY, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_BiodroPraweRotateY"));
+	WxSB_BiodroPraweRotateY->Enable(false);
+	WxBoxSizer25->Add(WxSB_BiodroPraweRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_BiodroPraweRotateY = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BiodroPraweRotateY"));
+	WxBoxSizer25->Add(WxST_BiodroPraweRotateY, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer26 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer21->Add(WxBoxSizer26, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText32 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText32"));
+	WxBoxSizer26->Add(WxStaticText32, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_BiodroPraweRotateZ = new wxScrollBar(this, ID_WxSB_BiodroPraweRotateZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_BiodroPraweRotateZ"));
+	WxSB_BiodroPraweRotateZ->Enable(false);
+	WxBoxSizer26->Add(WxSB_BiodroPraweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_BiodroPraweRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_BiodroPraweRotateZ"));
+	WxBoxSizer26->Add(WxST_BiodroPraweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText34 = new wxStaticText(this, ID_WXSTATICTEXT34, _("Kolano Prawe"), wxPoint(59, 112), wxDefaultSize, 0, _("WxStaticText34"));
+	WxBoxSizer21->Add(WxStaticText34, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer27 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer21->Add(WxBoxSizer27, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxStaticText35 = new wxStaticText(this, ID_WXSTATICTEXT2, _("OZ:"), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText35"));
+	WxBoxSizer27->Add(WxStaticText35, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxSB_KolanoPraweRotateZ = new wxScrollBar(this, ID_WxSB_KolanoPraweRotateZ, wxPoint(38, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxSB_KolanoPraweRotateZ"));
+	WxSB_KolanoPraweRotateZ->Enable(false);
+	WxBoxSizer27->Add(WxSB_KolanoPraweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxST_KolanoPraweRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_KolanoPraweRotateZ"));
+	WxBoxSizer27->Add(WxST_KolanoPraweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
 
 	SetTitle(_("Project_36"));
 	SetIcon(wxNullIcon);

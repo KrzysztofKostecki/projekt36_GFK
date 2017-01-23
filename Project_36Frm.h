@@ -76,6 +76,38 @@ class Project_36Frm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxStaticText *WxST_KolanoPraweRotateZ;
+		wxScrollBar *WxSB_KolanoPraweRotateZ;
+		wxStaticText *WxStaticText35;
+		wxBoxSizer *WxBoxSizer27;
+		wxStaticText *WxStaticText34;
+		wxStaticText *WxST_BiodroPraweRotateZ;
+		wxScrollBar *WxSB_BiodroPraweRotateZ;
+		wxStaticText *WxStaticText32;
+		wxBoxSizer *WxBoxSizer26;
+		wxStaticText *WxST_BiodroPraweRotateY;
+		wxScrollBar *WxSB_BiodroPraweRotateY;
+		wxStaticText *WxStaticText30;
+		wxBoxSizer *WxBoxSizer25;
+		wxStaticText *WxStaticText29;
+		wxStaticText *WxStaticText28;
+		wxScrollBar *WxSB_KolanoLeweRotateZ;
+		wxStaticText *WxStaticText27;
+		wxBoxSizer *WxBoxSizer24;
+		wxStaticText *WxStaticText26;
+		wxStaticText *WxST_BiodroLeweRotateZ;
+		wxScrollBar *WxSB_BiodroLeweRotateZ;
+		wxStaticText *WxStaticText24;
+		wxBoxSizer *WxBoxSizer23;
+		wxStaticText *WxST_BiodroLeweRotateY;
+		wxScrollBar *WxSB_BiodroLeweRotateY;
+		wxStaticText *WxStaticText22;
+		wxBoxSizer *WxBoxSizer22;
+		wxStaticText *WxStaticText21;
+		wxBoxSizer *WxBoxSizer21;
+		wxBoxSizer *WxBoxSizer20;
+		wxBoxSizer *WxBoxSizer19;
+		wxStaticText *WxStaticText17;
 		wxStaticText *WxST_StomachRotateX;
 		wxScrollBar *WxSB_StomachRotateX;
 		wxStaticText *WxStaticText20;
@@ -90,11 +122,6 @@ class Project_36Frm : public wxFrame
 		wxStaticText *WxStaticText19;
 		wxBoxSizer *WxBoxSizer17;
 		wxStaticText *WxStaticText18;
-		wxStaticText *WxST_RekaLeftRotateY;
-		wxScrollBar *WxSB_RekaLeftRotateY;
-		wxStaticText *WxStaticText13;
-		wxBoxSizer *WxBoxSizer15;
-		wxStaticText *WxStaticText12;
 		wxStaticText *WxST_BarkPrawyRotateZ;
 		wxScrollBar *WxSB_BarkPrawyRotateZ;
 		wxStaticText *WxStaticText15;
@@ -105,6 +132,11 @@ class Project_36Frm : public wxFrame
 		wxBoxSizer *WxBoxSizer12;
 		wxStaticText *WxStaticText8;
 		wxBoxSizer *WxBoxSizer10;
+		wxStaticText *WxST_RekaLeftRotateY;
+		wxScrollBar *WxSB_RekaLeftRotateY;
+		wxStaticText *WxStaticText13;
+		wxBoxSizer *WxBoxSizer15;
+		wxStaticText *WxStaticText12;
 		wxStaticText *WxST_BarkLeftRotateZ;
 		wxScrollBar *WxSB_BarkLeftRotateZ;
 		wxStaticText *WxStaticText10;
@@ -151,16 +183,28 @@ class Project_36Frm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
+			ID_WxSB_KolanoPraweRotateZ = 71,
+			ID_WXSTATICTEXT34 = 104,
+			ID_WxSB_BiodroPraweRotateZ = 81,
+			ID_WxSB_BiodroPraweRotateY = 80,
+			ID_WXSTATICTEXT29 = 101,
+			ID_WxSB_KolanoLeweRotateZ = 70,
+			ID_WXSTATICTEXT26 = 89,
+			ID_WXST_WxST_BiodroLeweRotateZ = 15,
+			ID_WXSB_WxSB_BiodroLeweRotateZ = 61,
+			ID_WXSB_WxSB_BiodroLeweRotateY = 60,
+			ID_WXSTATICTEXT21 = 86,
+			ID_WXSTATICTEXT17 = 72,
 			wxID_STOMACHROTATEX = 41,
 			ID_WXSB_STOMACHROTATEZ = 40,
 			ID_WXSTATICTEXT14 = 62,
 			ID_WXSB_RekaRightRotateY = 34,
 			ID_WXSTATICTEXT18 = 53,
-			ID_WXSB_RekaLeftRotateY = 32,
-			ID_WXSTATICTEXT12 = 47,
 			wxID_BARKPRAWYROTATEZ = 23,
 			ID_WXSB_BARKPRAWYROTATEY = 22,
 			ID_WXSTATICTEXT8 = 27,
+			ID_WXSB_RekaLeftRotateY = 32,
+			ID_WXSTATICTEXT12 = 47,
 			ID_WXSB_BarkLeftRotateZ = 21,
 			ID_WXSB_BarkLeftRotateY = 20,
 			ID_WXSTATICTEXT7 = 26,
