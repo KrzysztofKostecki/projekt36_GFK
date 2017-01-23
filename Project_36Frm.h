@@ -70,6 +70,12 @@ class Project_36Frm : public wxFrame
 		void WxSB_StomachRotateZScroll(wxScrollEvent& event);
 		void WxSB_StomachRotateXScroll(wxScrollEvent& event);
 		void WxPanel1UpdateUI(wxUpdateUIEvent& event);
+		void WxSB_BiodroLeweRotateYScroll(wxScrollEvent& event);
+		void WxSB_BiodroLeweRotateZScroll(wxScrollEvent& event);
+		void WxSB_BiodroPraweRotateYScroll(wxScrollEvent& event);
+		void WxSB_BiodroPraweRotateZScroll(wxScrollEvent& event);
+		void WxSB_KolanoLeweRotateZScroll(wxScrollEvent& event);
+		void WxSB_KolanoPraweRotateZScroll(wxScrollEvent& event);
 		
 	private:
 		//Do not add custom control declarations between

@@ -28,17 +28,17 @@ BEGIN_EVENT_TABLE(Project_36Frm,wxFrame)
 	
 	EVT_CLOSE(Project_36Frm::OnClose)
 	
-	EVT_COMMAND_SCROLL(ID_WxSB_KolanoPraweRotateZ,Project_36Frm::WxSB_RekaRightRotateYScroll)
+	EVT_COMMAND_SCROLL(ID_WxSB_KolanoPraweRotateZ,Project_36Frm::WxSB_KolanoPraweRotateZScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WxSB_BiodroPraweRotateZ,Project_36Frm::WxSB_HeadRotateZScroll)
+	EVT_COMMAND_SCROLL(ID_WxSB_BiodroPraweRotateZ,Project_36Frm::WxSB_BiodroPraweRotateZScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WxSB_BiodroPraweRotateY,Project_36Frm::WxSB_HeadRotateZScroll)
+	EVT_COMMAND_SCROLL(ID_WxSB_BiodroPraweRotateY,Project_36Frm::WxSB_BiodroPraweRotateYScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WxSB_KolanoLeweRotateZ,Project_36Frm::WxSB_RekaLeftRotateYScroll)
+	EVT_COMMAND_SCROLL(ID_WxSB_KolanoLeweRotateZ,Project_36Frm::WxSB_KolanoLeweRotateZScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_WxSB_BiodroLeweRotateZ,Project_36Frm::WxSB_BarkLeftRotateYScroll)
+	EVT_COMMAND_SCROLL(ID_WXSB_WxSB_BiodroLeweRotateZ,Project_36Frm::WxSB_BiodroLeweRotateZScroll)
 	
-	EVT_COMMAND_SCROLL(ID_WXSB_WxSB_BiodroLeweRotateY,Project_36Frm::WxSB_BarkLeftRotateYScroll)
+	EVT_COMMAND_SCROLL(ID_WXSB_WxSB_BiodroLeweRotateY,Project_36Frm::WxSB_BiodroLeweRotateYScroll)
 	
 	EVT_COMMAND_SCROLL(wxID_STOMACHROTATEX,Project_36Frm::WxSB_StomachRotateXScroll)
 	
@@ -838,4 +838,52 @@ void Project_36Frm::WxPanel1UpdateUI(wxUpdateUIEvent& event)
 	Project_36Frm::repaint();
 	
 	
+}
+
+/*
+ * WxSB_BiodroLeweRotateYScroll
+ */
+void Project_36Frm::WxSB_BiodroLeweRotateYScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_BiodroLeweRotateZScroll
+ */
+void Project_36Frm::WxSB_BiodroLeweRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_BiodroPraweRotateYScroll
+ */
+void Project_36Frm::WxSB_BiodroPraweRotateYScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_BiodroPraweRotateZScroll
+ */
+void Project_36Frm::WxSB_BiodroPraweRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_KolanoLeweRotateZScroll
+ */
+void Project_36Frm::WxSB_KolanoLeweRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
+}
+
+/*
+ * WxSB_KolanoPraweRotateZScroll
+ */
+void Project_36Frm::WxSB_KolanoPraweRotateZScroll(wxScrollEvent& event)
+{
+	// insert your code here
 }
