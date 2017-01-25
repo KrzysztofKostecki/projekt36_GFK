@@ -735,8 +735,8 @@ void Project_36Frm::updatePoints()
     alpha = ((WxSB_BarkLeftRotateY->GetThumbPosition())-180);
 	translate(-a,-b,-c, &(points[LELBOW]));
 	translate(-a,-b,-c, &(points[LHAND]));
-	rotateY(-alpha, &points[LELBOW]);
-	rotateY(-alpha, &points[LHAND]);
+	rotateY(alpha, &points[LELBOW]);
+	rotateY(alpha, &points[LHAND]);
 	alpha = ((WxSB_BarkLeftRotateZ->GetThumbPosition())-180);
 	rotateZ(-alpha, &points[LELBOW]);
 	rotateZ(-alpha, &points[LHAND]);
@@ -752,8 +752,8 @@ void Project_36Frm::updatePoints()
     alpha = (WxSB_BarkPrawyRotateY->GetThumbPosition())-180;
 	translate(-a,-b,-c, &(points[RELBOW]));
 	translate(-a,-b,-c, &(points[RHAND]));
-	rotateY(alpha, &points[RELBOW]);
-	rotateY(alpha, &points[RHAND]);
+	rotateY(-alpha, &points[RELBOW]);
+	rotateY(-alpha, &points[RHAND]);
 	alpha = (WxSB_BarkPrawyRotateZ->GetThumbPosition())-180;
 	rotateZ(alpha, &points[RELBOW]);
 	rotateZ(alpha, &points[RHAND]);
@@ -913,7 +913,7 @@ void Project_36Frm::WxSB_HeadRotateXScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BarkLeftRotateYScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<((WxSB_BarkLeftRotateY->GetThumbPosition()-180));
+    str<<((WxSB_BarkLeftRotateY->GetThumbPosition()));
     WxST_BarkLeftRotateY->SetLabel(str);
     updatePoints();
     repaint();
