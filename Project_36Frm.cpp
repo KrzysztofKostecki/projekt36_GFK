@@ -74,6 +74,8 @@ Project_36Frm::Project_36Frm(wxWindow *parent, wxWindowID id, const wxString &ti
 : wxFrame(parent, id, title, position, size, style)
 {
 	CreateGUIControls();
+	Project_36Frm::updatePoints();
+	Project_36Frm::repaint();
 }
 
 Project_36Frm::~Project_36Frm()
@@ -92,7 +94,7 @@ void Project_36Frm::CreateGUIControls()
 	this->SetSizer(WxBoxSizer1);
 	this->SetAutoLayout(true);
 
-	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 369), wxSize(231, 61));
+	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 369), wxSize(743, 61));
 	WxBoxSizer1->Add(WxPanel1, 5, wxEXPAND | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
@@ -306,9 +308,6 @@ void Project_36Frm::CreateGUIControls()
 	WxBoxSizer20 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer19->Add(WxBoxSizer20, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxBoxSizer21 = new wxBoxSizer(wxVERTICAL);
-	WxBoxSizer19->Add(WxBoxSizer21, 0, wxALIGN_CENTER | wxALL, 5);
-
 	WxStaticText21 = new wxStaticText(this, ID_WXSTATICTEXT21, _("Biodro Lewe"), wxPoint(62, 5), wxDefaultSize, 0, _("WxStaticText21"));
 	WxBoxSizer20->Add(WxStaticText21, 0, wxALIGN_CENTER | wxALL, 5);
 
@@ -353,6 +352,9 @@ void Project_36Frm::CreateGUIControls()
 
 	WxST_KolanoLeweRotateZ = new wxStaticText(this, ID_WXST_ROTATEX, _("0"), wxPoint(169, 5), wxDefaultSize, 0, _("WxST_KolanoLeweRotateZ"));
 	WxBoxSizer24->Add(WxST_KolanoLeweRotateZ, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxBoxSizer21 = new wxBoxSizer(wxVERTICAL);
+	WxBoxSizer19->Add(WxBoxSizer21, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxStaticText29 = new wxStaticText(this, ID_WXSTATICTEXT29, _("Biodro Prawe"), wxPoint(60, 5), wxDefaultSize, 0, _("WxStaticText29"));
 	WxBoxSizer21->Add(WxStaticText29, 0, wxALIGN_CENTER | wxALL, 5);
@@ -420,44 +422,51 @@ void Project_36Frm::CreateGUIControls()
 	
 	
 	
-	WxSB_HeadRotateZ->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_HeadRotateZ->SetScrollbar(0, 1, 91, 1,true);
+	WxSB_HeadRotateZ->SetThumbPosition(45);
 	WxSB_HeadRotateZ->Enable(true);
-	WxSB_HeadRotateX->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_HeadRotateX->SetScrollbar(0, 1, 91, 1,true);
 	WxSB_HeadRotateX->Enable(true);
 	
-	WxSB_BarkLeftRotateY->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkLeftRotateY->SetScrollbar(0, 1, 361, 1,true);
+	WxSB_BarkLeftRotateY->SetThumbPosition(180);
 	WxSB_BarkLeftRotateY->Enable(true);
-	WxSB_BarkLeftRotateZ->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkLeftRotateZ->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_BarkLeftRotateZ->Enable(true);
 	
-	WxSB_BarkPrawyRotateY->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkPrawyRotateY->SetScrollbar(0, 1, 361, 1,true);
+	WxSB_BarkPrawyRotateY->SetThumbPosition(180);
 	WxSB_BarkPrawyRotateY->Enable(true);
-	WxSB_BarkPrawyRotateZ->SetScrollbar(0, 1, 201, 1,true);
+	WxSB_BarkPrawyRotateZ->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_BarkPrawyRotateZ->Enable(true);
 	
-    WxSB_RekaLeftRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_RekaLeftRotateY->SetScrollbar(0, 1, 181, 1,true);
     WxSB_RekaLeftRotateY->Enable(true);
-    WxSB_RekaRightRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_RekaRightRotateY->SetScrollbar(0, 1, 181, 1,true);
     WxSB_RekaRightRotateY->Enable(true);
     
-    WxSB_StomachRotateX->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_StomachRotateX->SetScrollbar(0, 1, 91, 1,true);
     WxSB_StomachRotateX->Enable(true);
-    WxSB_StomachRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_StomachRotateZ->SetScrollbar(0, 1, 91, 1,true);
     WxSB_StomachRotateZ->Enable(true);
     
-    WxSB_BiodroLeweRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroLeweRotateY->SetScrollbar(0, 1, 181, 1,true);
+    WxSB_BiodroLeweRotateY->SetThumbPosition(90);
     WxSB_BiodroLeweRotateY->Enable(true);
-    WxSB_BiodroPraweRotateY->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroPraweRotateY->SetScrollbar(0, 1, 181, 1,true);
+    WxSB_BiodroPraweRotateY->SetThumbPosition(90);
     WxSB_BiodroPraweRotateY->Enable(true);
     
-    WxSB_BiodroLeweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroLeweRotateZ->SetScrollbar(0, 1, 181, 1,true);
+    WxSB_BiodroLeweRotateZ->SetThumbPosition(90);
     WxSB_BiodroLeweRotateZ->Enable(true);
-    WxSB_BiodroPraweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_BiodroPraweRotateZ->SetScrollbar(0, 1, 181, 1,true);
+    WxSB_BiodroPraweRotateZ->SetThumbPosition(90);
     WxSB_BiodroPraweRotateZ->Enable(true);
     
-    WxSB_KolanoPraweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_KolanoPraweRotateZ->SetScrollbar(0, 1, 181, 1,true);
     WxSB_KolanoPraweRotateZ->Enable(true);
-    WxSB_KolanoLeweRotateZ->SetScrollbar(0, 1, 201, 1,true);
+    WxSB_KolanoLeweRotateZ->SetScrollbar(0, 1, 181, 1,true);
     WxSB_KolanoLeweRotateZ->Enable(true);
     
     
@@ -534,7 +543,6 @@ void Project_36Frm::initPoints()
 // Funkcja aktualizuj¹ca szkielet na podstawie punktów
 void Project_36Frm::repaint()
 {
-	/* TODO (#1#): Implement Project_36Frm::repaint() */
 	wxClientDC dc1(WxPanel1);
     int w,h;
     wxBufferedDC dc(&dc1);   
@@ -780,20 +788,10 @@ void normalization(Vector4 *v){
     }
 }
 
-//"point" który obracamy "around" 
-/*void transformBodyPart(Matrix m, Point &p, Point wokol){
-    Vector4 v;
-       v.Set(p.x,p.y,p.z);
-       v=m*v;
-       normalization(&v);
-       p.x = v.GetX();
-       p.y = v.GetY();
-       p.z = v.GetZ();
-}*/
+
 void Project_36Frm::updatePoints()
 {
        Project_36Frm::initPoints();
-	/* TODO (#1#): Implement Project_36Frm::updatePoints() */
 	
 	double alpha;
 	double a,b,c;
@@ -808,9 +806,9 @@ void Project_36Frm::updatePoints()
 	c = points[NECK].z;
 
 	translate(-a,-b,-c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-	rotateZ(alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
+	rotateZ(alpha-45, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
 	alpha = WxSB_HeadRotateX->GetThumbPosition();
-	rotateX(alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
+	rotateX(-alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
 	translate(a , b, c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
 	
 	
@@ -823,7 +821,7 @@ void Project_36Frm::updatePoints()
 	c = points[LELBOW].z;
 
 	translate(-a,-b,-c, &(points[LHAND]));
-	rotateY(-alpha, &(points[LHAND]));
+	rotateY(alpha, &(points[LHAND]));
 	translate(a , b, c, &(points[LHAND]));
 
     //RIGHT
@@ -833,7 +831,7 @@ void Project_36Frm::updatePoints()
 	c = points[RELBOW].z;
 
 	translate(-a,-b,-c, &(points[RHAND]));
-	rotateY(alpha, &(points[RHAND]));
+	rotateY(-alpha, &(points[RHAND]));
 	translate(a,b,c, &(points[RHAND]));
 
 
@@ -843,12 +841,12 @@ void Project_36Frm::updatePoints()
 	b = points[LARM].y;
 	c = points[LARM].z;
 	
-    alpha = (WxSB_BarkLeftRotateY->GetThumbPosition());
+    alpha = ((WxSB_BarkLeftRotateY->GetThumbPosition())-180);
 	translate(-a,-b,-c, &(points[LELBOW]));
 	translate(-a,-b,-c, &(points[LHAND]));
 	rotateY(-alpha, &points[LELBOW]);
 	rotateY(-alpha, &points[LHAND]);
-	alpha = (WxSB_BarkLeftRotateZ->GetThumbPosition());
+	alpha = ((WxSB_BarkLeftRotateZ->GetThumbPosition())-180);
 	rotateZ(-alpha, &points[LELBOW]);
 	rotateZ(-alpha, &points[LHAND]);
 	translate(a,b,c, &(points[LELBOW]));
@@ -860,12 +858,12 @@ void Project_36Frm::updatePoints()
 	b = points[RARM].y;
 	c = points[RARM].z;
 
-    alpha = (WxSB_BarkPrawyRotateY->GetThumbPosition());
+    alpha = (WxSB_BarkPrawyRotateY->GetThumbPosition())-180;
 	translate(-a,-b,-c, &(points[RELBOW]));
 	translate(-a,-b,-c, &(points[RHAND]));
 	rotateY(alpha, &points[RELBOW]);
 	rotateY(alpha, &points[RHAND]);
-	alpha = (WxSB_BarkPrawyRotateZ->GetThumbPosition());
+	alpha = (WxSB_BarkPrawyRotateZ->GetThumbPosition())-180;
 	rotateZ(alpha, &points[RELBOW]);
 	rotateZ(alpha, &points[RHAND]);
 	translate(a,b,c, &(points[RELBOW]));
@@ -874,7 +872,7 @@ void Project_36Frm::updatePoints()
 	
 	//STOMACH ROTATION
 	
-	alpha = (WxSB_StomachRotateZ->GetThumbPosition());
+	alpha = (WxSB_StomachRotateZ->GetThumbPosition())-45;
 
 	rotateZ(-alpha, &points[RELBOW]);
 	rotateZ(-alpha, &points[RHAND]);
@@ -926,14 +924,14 @@ void Project_36Frm::updatePoints()
 	b = points[LLEG].y;
 	c = points[LLEG].z;
 	
-    alpha = (WxSB_BiodroLeweRotateZ->GetThumbPosition());
+    alpha = (WxSB_BiodroLeweRotateZ->GetThumbPosition()-90);
 	translate(-a,-b,-c, &(points[LKNEE]));
 	translate(-a,-b,-c, &(points[LFOOT]));
 	rotateZ(-alpha, &points[LKNEE]);
 	rotateZ(-alpha, &points[LFOOT]);
-	alpha = (WxSB_BiodroLeweRotateY->GetThumbPosition());
-	rotateX(alpha, &points[LKNEE]);
-	rotateX(alpha, &points[LFOOT]);
+	alpha = (WxSB_BiodroLeweRotateY->GetThumbPosition()-90);
+	rotateX(-alpha, &points[LKNEE]);
+	rotateX(-alpha, &points[LFOOT]);
 	translate(a,b,c, &(points[LKNEE]));
 	translate(a,b,c, &(points[LFOOT]));
 	
@@ -942,12 +940,12 @@ void Project_36Frm::updatePoints()
 	a = points[RLEG].x;
 	b = points[RLEG].y;
 	c = points[RLEG].z;
-    alpha = (WxSB_BiodroPraweRotateZ->GetThumbPosition());
+    alpha = (WxSB_BiodroPraweRotateZ->GetThumbPosition()-90);
 	translate(-a,-b,-c, &(points[RKNEE]));
 	translate(-a,-b,-c, &(points[RFOOT]));
 	rotateZ(alpha, &points[RKNEE]);
 	rotateZ(alpha, &points[RFOOT]);
-	alpha = (WxSB_BiodroPraweRotateY->GetThumbPosition());
+	alpha = (WxSB_BiodroPraweRotateY->GetThumbPosition()-90);
 	rotateX(-alpha, &points[RKNEE]);
 	rotateX(-alpha, &points[RFOOT]);
 	translate(a,b,c, &(points[RKNEE]));
@@ -1000,7 +998,7 @@ void Project_36Frm::updatePoints()
 void Project_36Frm::WxSB_HeadRotateZScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_HeadRotateZ->GetThumbPosition());
+    str<<((WxSB_HeadRotateZ->GetThumbPosition())-45);
     WxST_HeadRotateZ->SetLabel(str);
     updatePoints();
     repaint();
@@ -1024,7 +1022,7 @@ void Project_36Frm::WxSB_HeadRotateXScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BarkLeftRotateYScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BarkLeftRotateY->GetThumbPosition());
+    str<<((WxSB_BarkLeftRotateY->GetThumbPosition()-180));
     WxST_BarkLeftRotateY->SetLabel(str);
     updatePoints();
     repaint();
@@ -1036,7 +1034,7 @@ void Project_36Frm::WxSB_BarkLeftRotateYScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BarkLeftRotateZScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BarkLeftRotateZ->GetThumbPosition());
+    str<<((WxSB_BarkLeftRotateZ->GetThumbPosition())-180);
     WxST_BarkLeftRotateZ->SetLabel(str);
     updatePoints();
     repaint();
@@ -1048,7 +1046,7 @@ void Project_36Frm::WxSB_BarkLeftRotateZScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BarkPrawyRotateY->GetThumbPosition());
+    str<<((WxSB_BarkPrawyRotateY->GetThumbPosition())-180);
     WxST_BarkPrawyRotateY->SetLabel(str);
     updatePoints();
     repaint();
@@ -1060,7 +1058,7 @@ void Project_36Frm::WxSB_BarkPrawyRotateYScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BarkPrawyRotateZScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BarkPrawyRotateZ->GetThumbPosition());
+    str<<((WxSB_BarkPrawyRotateZ->GetThumbPosition())-180);
     WxST_BarkPrawyRotateZ->SetLabel(str);
     updatePoints();
     repaint();
@@ -1101,7 +1099,7 @@ void Project_36Frm::WxSB_RekaRightRotateYScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_StomachRotateZScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_StomachRotateZ->GetThumbPosition());
+    str<<(WxSB_StomachRotateZ->GetThumbPosition()-45);
     WxST_StomachRotateZ->SetLabel(str);
     updatePoints();
     repaint();
@@ -1136,7 +1134,7 @@ void Project_36Frm::WxPanel1UpdateUI(wxUpdateUIEvent& event)
 void Project_36Frm::WxSB_BiodroLeweRotateYScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BiodroLeweRotateY->GetThumbPosition());
+    str<<(WxSB_BiodroLeweRotateY->GetThumbPosition()-90);
     WxST_BiodroLeweRotateY->SetLabel(str);
     updatePoints();
     repaint();
@@ -1148,7 +1146,7 @@ void Project_36Frm::WxSB_BiodroLeweRotateYScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BiodroLeweRotateZScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BiodroLeweRotateZ->GetThumbPosition());
+    str<<(WxSB_BiodroLeweRotateZ->GetThumbPosition()-90);
     WxST_BiodroLeweRotateZ->SetLabel(str);
     updatePoints();
     repaint();
@@ -1160,7 +1158,7 @@ void Project_36Frm::WxSB_BiodroLeweRotateZScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BiodroPraweRotateYScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BiodroPraweRotateY->GetThumbPosition());
+    str<<(WxSB_BiodroPraweRotateY->GetThumbPosition()-90);
     WxST_BiodroPraweRotateY->SetLabel(str);
     updatePoints();
     repaint();
@@ -1172,7 +1170,7 @@ void Project_36Frm::WxSB_BiodroPraweRotateYScroll(wxScrollEvent& event)
 void Project_36Frm::WxSB_BiodroPraweRotateZScroll(wxScrollEvent& event)
 {
 	wxString str;
-    str<<(WxSB_BiodroPraweRotateZ->GetThumbPosition());
+    str<<(WxSB_BiodroPraweRotateZ->GetThumbPosition()-90);
     WxST_BiodroPraweRotateZ->SetLabel(str);
     updatePoints();
     repaint();

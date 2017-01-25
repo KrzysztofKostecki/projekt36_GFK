@@ -5,7 +5,7 @@ object frmNewForm: TfrmNewForm
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Project_36'
   ClientHeight = 1053
-  ClientWidth = 884
+  ClientWidth = 1170
   Color = clAppWorkSpace
   OldCreateOrder = True
   PopupMenu = DesignerPopup.Owner
@@ -34,7 +34,7 @@ object frmNewForm: TfrmNewForm
   object WxBoxSizer1: TWxBoxSizer
     Left = 0
     Top = 0
-    Width = 884
+    Width = 1170
     Height = 1053
     Align = alClient
     TabOrder = 0
@@ -45,7 +45,7 @@ object frmNewForm: TfrmNewForm
     object WxPanel1: TWxPanel
       Left = 5
       Top = 369
-      Width = 231
+      Width = 743
       Height = 61
       TabOrder = 0
       EVT_UPDATE_UI = 'WxPanel1UpdateUI'
@@ -80,7 +80,7 @@ object frmNewForm: TfrmNewForm
       Wx_Floating_Y_Pos = 0
     end
     object WxBoxSizer2: TWxBoxSizer
-      Left = 251
+      Left = 763
       Top = 10
       Width = 418
       Height = 779

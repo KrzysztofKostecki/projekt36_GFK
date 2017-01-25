@@ -99,6 +99,7 @@ class Project_36Frm : public wxFrame
 		wxStaticText *WxStaticText30;
 		wxBoxSizer *WxBoxSizer25;
 		wxStaticText *WxStaticText29;
+		wxBoxSizer *WxBoxSizer21;
 		wxStaticText *WxST_KolanoLeweRotateZ;
 		wxScrollBar *WxSB_KolanoLeweRotateZ;
 		wxStaticText *WxStaticText27;
@@ -113,7 +114,6 @@ class Project_36Frm : public wxFrame
 		wxStaticText *WxStaticText22;
 		wxBoxSizer *WxBoxSizer22;
 		wxStaticText *WxStaticText21;
-		wxBoxSizer *WxBoxSizer21;
 		wxBoxSizer *WxBoxSizer20;
 		wxBoxSizer *WxBoxSizer19;
 		wxStaticText *WxStaticText17;
