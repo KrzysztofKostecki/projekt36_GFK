@@ -428,14 +428,14 @@ void Project_36Frm::CreateGUIControls()
 	WxSB_HeadRotateX->SetScrollbar(0, 1, 91, 1,true);
 	WxSB_HeadRotateX->Enable(true);
 	
-	WxSB_BarkLeftRotateY->SetScrollbar(0, 1, 361, 1,true);
-	WxSB_BarkLeftRotateY->SetThumbPosition(180);
+	WxSB_BarkLeftRotateY->SetScrollbar(0, 1, 181, 1,true);
+	WxSB_BarkLeftRotateY->SetThumbPosition(0);
 	WxSB_BarkLeftRotateY->Enable(true);
 	WxSB_BarkLeftRotateZ->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_BarkLeftRotateZ->Enable(true);
 	
-	WxSB_BarkPrawyRotateY->SetScrollbar(0, 1, 361, 1,true);
-	WxSB_BarkPrawyRotateY->SetThumbPosition(180);
+	WxSB_BarkPrawyRotateY->SetScrollbar(0, 1, 181, 1,true);
+	WxSB_BarkPrawyRotateY->SetThumbPosition(0);
 	WxSB_BarkPrawyRotateY->Enable(true);
 	WxSB_BarkPrawyRotateZ->SetScrollbar(0, 1, 361, 1,true);
 	WxSB_BarkPrawyRotateZ->Enable(true);
@@ -448,6 +448,7 @@ void Project_36Frm::CreateGUIControls()
     WxSB_StomachRotateX->SetScrollbar(0, 1, 91, 1,true);
     WxSB_StomachRotateX->Enable(true);
     WxSB_StomachRotateZ->SetScrollbar(0, 1, 91, 1,true);
+    WxSB_StomachRotateZ->SetThumbPosition(45);
     WxSB_StomachRotateZ->Enable(true);
     
     WxSB_BiodroLeweRotateY->SetScrollbar(0, 1, 181, 1,true);
@@ -685,7 +686,7 @@ void Project_36Frm::updatePoints()
 	double a,b,c;
 	
 	//HEAD rotation
-    alpha = (WxSB_HeadRotateZ->GetThumbPosition());
+    alpha = (WxSB_HeadRotateZ->GetThumbPosition()-45);
 
 	
 	a, b, c;
@@ -693,19 +694,13 @@ void Project_36Frm::updatePoints()
 	b = points[NECK].y;
 	c = points[NECK].z;
 
-<<<<<<< HEAD
-	translate(-a,-b,-c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-	rotateZ(alpha-45, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-	alpha = WxSB_HeadRotateX->GetThumbPosition();
-	rotateX(-alpha, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-	translate(a , b, c, &(points[NECK].x), &(points[NECK].y), &(points[NECK].z), &(points[HEAD].x), &(points[HEAD].y), &(points[HEAD].z));
-=======
+
 	translate(-a,-b,-c, &(points[HEAD]));
 	rotateZ(alpha, &(points[HEAD]));
 	alpha = WxSB_HeadRotateX->GetThumbPosition();
 	rotateX(-alpha, &(points[HEAD]));
 	translate(a , b, c, &(points[HEAD]));
->>>>>>> 85a50c40df11fc37f6d46ddcf6ce904ac5ee6266
+
 	
 	
 	//HANDS ROTATION
